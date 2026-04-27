@@ -1,0 +1,749 @@
+/* ============================================
+   Portal Resmi Kabupaten Karanganyar
+   Custom CSS - Color Palette & Global Styles
+   ============================================ */
+
+/* --- Color Palette Variables --- */
+:root {
+  --navy:        #001a5c;
+  --royal-blue:  #2b6cb0;
+  --accent-red:  #d00000;
+  --light-gray:  #f0f0f0;
+  --white:       #ffffff;
+  --dark-text:   #1a1a2e;
+  --muted-text:  #6c757d;
+  --border-color:#dee2e6;
+}
+
+/* --- Global Resets & Base --- */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  color: var(--dark-text);
+  background-color: var(--white);
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+section {
+  padding: 60px 0;
+}
+
+/* --- Top Bar --- */
+.top-bar {
+  background-color: var(--navy);
+  color: rgba(255,255,255,0.75);
+  font-size: 0.82rem;
+  padding: 6px 0;
+  border-bottom: 2px solid var(--accent-red);
+}
+
+.top-bar a {
+  color: rgba(255,255,255,0.75);
+  margin-right: 18px;
+  transition: color 0.2s;
+}
+
+.top-bar a:hover {
+  color: var(--white);
+}
+
+.top-bar .top-bar-right a {
+  margin-right: 0;
+  margin-left: 18px;
+}
+
+/* --- Main Navbar --- */
+.navbar-main {
+  background: var(--white);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  padding: 0;
+  position: sticky;
+  top: 0;
+  z-index: 1050;
+}
+
+.navbar-main .navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--navy);
+}
+
+.navbar-main .navbar-brand img {
+  height: 44px;
+}
+
+.navbar-main .nav-link {
+  color: var(--dark-text);
+  font-weight: 500;
+  font-size: 0.92rem;
+  padding: 20px 16px !important;
+  transition: color 0.2s, background-color 0.2s;
+  position: relative;
+}
+
+.navbar-main .nav-link:hover,
+.navbar-main .nav-link.active {
+  color: var(--royal-blue);
+}
+
+.navbar-main .nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 3px;
+  background: var(--accent-red);
+  transition: width 0.3s ease;
+  border-radius: 3px 3px 0 0;
+}
+
+.navbar-main .nav-link:hover::after,
+.navbar-main .nav-link.active::after {
+  width: 70%;
+}
+
+.navbar-main .dropdown-menu {
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+  padding: 8px 0;
+  margin-top: 0;
+  border-top: 3px solid var(--accent-red);
+}
+
+.navbar-main .dropdown-item {
+  padding: 8px 20px;
+  font-size: 0.9rem;
+  transition: background 0.15s, color 0.15s;
+}
+
+.navbar-main .dropdown-item:hover {
+  background: var(--light-gray);
+  color: var(--royal-blue);
+}
+
+/* --- Hero Section --- */
+.hero-section {
+  position: relative;
+  background: linear-gradient(135deg, var(--navy) 0%, var(--royal-blue) 100%);
+  color: var(--white);
+  padding: 100px 0 80px;
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 600px;
+  height: 600px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 50%;
+}
+
+.hero-section::after {
+  content: '';
+  position: absolute;
+  bottom: -30%;
+  left: -10%;
+  width: 400px;
+  height: 400px;
+  background: rgba(255,255,255,0.03);
+  border-radius: 50%;
+}
+
+.hero-section h1 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 18px;
+}
+
+.hero-section .hero-tagline {
+  font-size: 1.15rem;
+  opacity: 0.88;
+  max-width: 550px;
+  line-height: 1.7;
+  margin-bottom: 30px;
+}
+
+.hero-section .btn-hero {
+  background: var(--accent-red);
+  color: var(--white);
+  border: none;
+  padding: 12px 32px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.hero-section .btn-hero:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(208,0,0,0.35);
+  color: var(--white);
+}
+
+/* --- Stats Bar --- */
+.stats-bar {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 24px 36px;
+  margin-top: 40px;
+  border: 1px solid rgba(255,255,255,0.15);
+}
+
+.stats-bar .stat-item {
+  text-align: center;
+}
+
+.stats-bar .stat-number {
+  font-size: 1.8rem;
+  font-weight: 800;
+}
+
+.stats-bar .stat-label {
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0.75;
+  margin-top: 2px;
+}
+
+/* --- Section Titles --- */
+.section-title {
+  text-align: center;
+  margin-bottom: 45px;
+}
+
+.section-title h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 10px;
+}
+
+.section-title p {
+  color: var(--muted-text);
+  font-size: 1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.section-title .title-line {
+  width: 60px;
+  height: 4px;
+  background: var(--accent-red);
+  border-radius: 4px;
+  margin: 12px auto 0;
+}
+
+/* --- Quick Access / Layanan Publik --- */
+.quick-access {
+  background: var(--light-gray);
+}
+
+.quick-access-card {
+  background: var(--white);
+  border-radius: 12px;
+  padding: 28px 20px;
+  text-align: center;
+  transition: transform 0.25s, box-shadow 0.25s;
+  border: 1px solid var(--border-color);
+  height: 100%;
+}
+
+.quick-access-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 35px rgba(0,26,92,0.1);
+  border-color: var(--royal-blue);
+}
+
+.quick-access-card .qa-icon {
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, var(--navy), var(--royal-blue));
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  color: var(--white);
+  font-size: 1.4rem;
+  transition: transform 0.2s;
+}
+
+.quick-access-card:hover .qa-icon {
+  transform: scale(1.08);
+}
+
+.quick-access-card h6 {
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+}
+
+.quick-access-card p {
+  font-size: 0.8rem;
+  color: var(--muted-text);
+  margin-bottom: 0;
+}
+
+/* --- Organisasi / Perangkat Daerah Cards --- */
+.org-card {
+  background: var(--white);
+  border-radius: 12px;
+  padding: 28px 24px;
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.org-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 0;
+  background: var(--accent-red);
+  transition: height 0.3s ease;
+}
+
+.org-card:hover::before {
+  height: 100%;
+}
+
+.org-card:hover {
+  box-shadow: 0 8px 30px rgba(0,26,92,0.1);
+  transform: translateY(-4px);
+}
+
+.org-card .org-icon {
+  width: 48px;
+  height: 48px;
+  background: var(--light-gray);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--royal-blue);
+  font-size: 1.3rem;
+  margin-bottom: 16px;
+}
+
+.org-card h5 {
+  font-weight: 700;
+  color: var(--navy);
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+.org-card p {
+  font-size: 0.85rem;
+  color: var(--muted-text);
+  line-height: 1.6;
+}
+
+.org-card .org-link {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--royal-blue);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: gap 0.2s;
+}
+
+.org-card:hover .org-link {
+  gap: 8px;
+  color: var(--accent-red);
+}
+
+/* --- Potensi Daerah --- */
+.potensi-section {
+  background: var(--light-gray);
+}
+
+.potensi-card {
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  height: 260px;
+  display: flex;
+  align-items: flex-end;
+  transition: transform 0.3s;
+  cursor: pointer;
+}
+
+.potensi-card:hover {
+  transform: scale(1.02);
+}
+
+.potensi-card .potensi-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.4s;
+}
+
+.potensi-card:hover .potensi-bg {
+  transform: scale(1.08);
+}
+
+.potensi-card .potensi-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,26,92,0.85) 0%, transparent 70%);
+}
+
+.potensi-card .potensi-content {
+  position: relative;
+  z-index: 2;
+  padding: 24px;
+  color: var(--white);
+}
+
+.potensi-card .potensi-content h4 {
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-bottom: 4px;
+}
+
+.potensi-card .potensi-content p {
+  font-size: 0.85rem;
+  opacity: 0.85;
+  margin-bottom: 0;
+}
+
+/* --- Berita Section --- */
+.berita-card {
+  background: var(--white);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  transition: transform 0.25s, box-shadow 0.25s;
+  height: 100%;
+}
+
+.berita-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 28px rgba(0,26,92,0.1);
+}
+
+.berita-card .berita-img {
+  height: 200px;
+  overflow: hidden;
+}
+
+.berita-card .berita-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s;
+}
+
+.berita-card:hover .berita-img img {
+  transform: scale(1.06);
+}
+
+.berita-card .berita-body {
+  padding: 20px;
+}
+
+.berita-card .berita-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.berita-card .berita-date {
+  font-size: 0.78rem;
+  color: var(--muted-text);
+}
+
+.berita-card .berita-category {
+  font-size: 0.72rem;
+  padding: 3px 10px;
+  background: rgba(43,108,176,0.1);
+  color: var(--royal-blue);
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+.berita-card h5 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 8px;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.berita-card p {
+  font-size: 0.84rem;
+  color: var(--muted-text);
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* --- Footer --- */
+.footer-main {
+  background: var(--navy);
+  color: rgba(255,255,255,0.8);
+  padding: 60px 0 0;
+}
+
+.footer-main h5 {
+  color: var(--white);
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 20px;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.footer-main h5::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 35px;
+  height: 3px;
+  background: var(--accent-red);
+  border-radius: 3px;
+}
+
+.footer-main p,
+.footer-main li {
+  font-size: 0.88rem;
+  line-height: 1.8;
+}
+
+.footer-main a {
+  color: rgba(255,255,255,0.7);
+  transition: color 0.2s, padding-left 0.2s;
+}
+
+.footer-main a:hover {
+  color: var(--white);
+  padding-left: 4px;
+}
+
+.footer-main .footer-contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.footer-main .footer-contact-item i {
+  color: var(--accent-red);
+  margin-top: 4px;
+  font-size: 0.95rem;
+}
+
+.footer-bottom {
+  background: rgba(0,0,0,0.2);
+  padding: 16px 0;
+  margin-top: 40px;
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.5);
+}
+
+/* --- Override GPR Kominfo Widget --- */
+body #gpr-kominfo-widget-list {
+  max-height: 250px !important;
+}
+body #gpr-kominfo-widget-container {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+body #gpr-kominfo-widget-header,
+body #gpr-kominfo-widget-footer {
+  display: none !important;
+}
+
+/* --- Buttons --- */
+.btn-primary-custom {
+  background: var(--royal-blue);
+  color: var(--white);
+  border: none;
+  padding: 10px 24px;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.btn-primary-custom:hover {
+  background: var(--navy);
+  color: var(--white);
+  transform: translateY(-1px);
+}
+
+.btn-outline-custom {
+  color: var(--royal-blue);
+  border: 2px solid var(--royal-blue);
+  padding: 10px 24px;
+  font-weight: 600;
+  border-radius: 8px;
+  background: transparent;
+  transition: all 0.2s;
+}
+
+.btn-outline-custom:hover {
+  background: var(--royal-blue);
+  color: var(--white);
+  transform: translateY(-1px);
+}
+
+/* --- Scroll to Top Button --- */
+.scroll-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 44px;
+  height: 44px;
+  background: var(--accent-red);
+  color: var(--white);
+  border: none;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s, transform 0.2s;
+  z-index: 1000;
+  box-shadow: 0 4px 15px rgba(208,0,0,0.3);
+}
+
+.scroll-top.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.scroll-top:hover {
+  transform: translateY(-3px);
+  background: var(--navy);
+}
+
+/* --- Aduan Section --- */
+.aduan-section {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--royal-blue) 100%);
+  color: var(--white);
+}
+
+.aduan-card {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 12px;
+  padding: 24px 20px;
+  text-align: center;
+  transition: all 0.3s ease;
+  height: 100%;
+}
+
+.aduan-card:hover {
+  background: rgba(255,255,255,0.18);
+  transform: translateY(-4px);
+}
+
+.aduan-card i {
+  font-size: 2rem;
+  margin-bottom: 14px;
+  display: block;
+}
+
+.aduan-card h6 {
+  font-weight: 700;
+  margin-bottom: 6px;
+  font-size: 0.92rem;
+}
+
+.aduan-card p {
+  font-size: 0.82rem;
+  opacity: 0.8;
+  margin-bottom: 0;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 991.98px) {
+  .hero-section {
+    padding: 60px 0 50px;
+  }
+
+  .hero-section h1 {
+    font-size: 2rem;
+  }
+
+  .stats-bar {
+    padding: 18px 20px;
+  }
+
+  .stats-bar .stat-number {
+    font-size: 1.4rem;
+  }
+
+  .navbar-main .nav-link {
+    padding: 10px 16px !important;
+  }
+
+  .navbar-main .nav-link::after {
+    display: none;
+  }
+}
+
+@media (max-width: 767.98px) {
+  section {
+    padding: 40px 0;
+  }
+
+  .hero-section h1 {
+    font-size: 1.7rem;
+  }
+
+  .hero-section .hero-tagline {
+    font-size: 1rem;
+  }
+
+  .potensi-card {
+    height: 200px;
+  }
+}
