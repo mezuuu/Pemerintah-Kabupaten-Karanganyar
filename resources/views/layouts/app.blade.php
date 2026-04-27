@@ -64,12 +64,13 @@
             <div class="collapse navbar-collapse" id="mainNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="{{ url('/') }}">Beranda</a>
+                        <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="{{ url('/') }}">Beranda</a>
                     </li>
 
                     {{-- Profil Dropdown --}}
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Profil</a>
+                        <a class="nav-link dropdown-toggle {{ Request::is('profil*') || Request::is('legislatif*') || Request::is('pejabat*') || Request::is('rlppd*') ? 'active' : '' }}"
+                            href="#" data-bs-toggle="dropdown">Profil</a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="{{ url('/profil') }}">Profil Kabupaten</a></li>
                             <li><a class="dropdown-item" href="{{ url('/legislatif') }}">Legislatif</a></li>
@@ -82,30 +83,31 @@
 
                     {{-- Perangkat Daerah Dropdown --}}
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Perangkat Daerah</a>
+                        <a class="nav-link dropdown-toggle {{ Request::is('organisasi*') ? 'active' : '' }}" href="#"
+                            data-bs-toggle="dropdown">Perangkat Daerah</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{ url('/organisasi/sekretariat-daerah') }}">Sekretariat
-                                    Daerah</a></li>
-                            <li><a class="dropdown-item" href="{{ url('/organisasi/sekretariat-dprd') }}">Sekretariat
-                                    DPRD</a></li>
-                            <li><a class="dropdown-item" href="{{ url('/organisasi/inspektorat') }}">Inspektorat</a>
-                            </li>
-                            <li><a class="dropdown-item" href="{{ url('/organisasi/dinas') }}">Dinas</a></li>
+                            <li><a class="dropdown-item" href="https://setda.karanganyarkab.go.id/" target="_blank">Sekretariat Daerah</a></li>
+                            <li><a class="dropdown-item" href="https://dprd.karanganyarkab.go.id/struktur-organisasi-dprd-kabupaten-karanganyar/" target="_blank">Sekretariat DPRD</a></li>
+                            <li><a class="dropdown-item" href="https://inspektorat.karanganyarkab.go.id/" target="_blank">Inspektorat</a></li>
+                            <li><a class="dropdown-item" href="https://www.karanganyarkab.go.id/category/skpd/dinas/" target="_blank">Dinas</a></li>
                             <li><a class="dropdown-item" href="{{ url('/organisasi/badan') }}">Badan</a></li>
-                            <li><a class="dropdown-item" href="{{ url('/organisasi/kecamatan') }}">Kecamatan</a></li>
+                            <li><a class="dropdown-item" href="https://kec-karanganyar.kebumenkab.go.id/" target="_blank">Kecamatan</a></li>
                             <li><a class="dropdown-item" href="{{ url('/organisasi/kelurahan') }}">Kelurahan</a></li>
-                            <li><a class="dropdown-item" href="{{ url('/organisasi/rsud') }}">RSUD</a></li>
+                            <li><a class="dropdown-item"
+                                    href="https://rsudkaranganyar.simkeskhanza.com/" target="_blank">RSUD (Rumah Sakit Daerah)</a></li>
                             <li><a class="dropdown-item" href="{{ url('/organisasi/bumd') }}">BUMD</a></li>
                         </ul>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/berita') }}">Berita</a>
+                        <a class="nav-link {{ Request::is('berita*') ? 'active' : '' }}"
+                            href="{{ url('/berita') }}">Berita</a>
                     </li>
 
                     {{-- Aduan Dropdown --}}
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Aduan</a>
+                        <a class="nav-link dropdown-toggle {{ Request::is('wbs*') || Request::is('suara-masyarakat*') ? 'active' : '' }}"
+                            href="#" data-bs-toggle="dropdown">Aduan</a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="{{ url('/wbs') }}">Whistleblowing System</a></li>
                             <li><a class="dropdown-item" href="{{ url('/suara-masyarakat') }}">Suara Masyarakat</a></li>
@@ -120,7 +122,8 @@
 
                     {{-- Data Dropdown --}}
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Data</a>
+                        <a class="nav-link dropdown-toggle {{ Request::is('transparansi-anggaran*') || Request::is('hibah-dan-bansos*') || Request::is('statistik*') ? 'active' : '' }}"
+                            href="#" data-bs-toggle="dropdown">Data</a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="https://satudata.karanganyarkab.go.id/"
                                     target="_blank">Satudata</a></li>

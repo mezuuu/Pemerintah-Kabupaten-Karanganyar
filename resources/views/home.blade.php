@@ -133,7 +133,7 @@
                         <div class="org-icon"><i class="bi bi-building"></i></div>
                         <h5>Sekretariat Daerah</h5>
                         <p>Pusat administrasi dan koordinasi pemerintahan daerah Kabupaten Karanganyar.</p>
-                        <a href="{{ url('/organisasi/sekretariat-daerah') }}" class="org-link">Selengkapnya <i
+                        <a href="https://setda.karanganyarkab.go.id/" target="_blank" class="org-link">Selengkapnya <i
                                 class="bi bi-arrow-right"></i></a>
                     </div>
                 </div>
@@ -142,7 +142,7 @@
                         <div class="org-icon"><i class="bi bi-bank"></i></div>
                         <h5>Sekretariat DPRD</h5>
                         <p>Mendukung kelancaran tugas dan fungsi Dewan Perwakilan Rakyat Daerah.</p>
-                        <a href="{{ url('/organisasi/sekretariat-dprd') }}" class="org-link">Selengkapnya <i
+                        <a href="https://dprd.karanganyarkab.go.id/struktur-organisasi-dprd-kabupaten-karanganyar/" target="_blank" class="org-link">Selengkapnya <i
                                 class="bi bi-arrow-right"></i></a>
                     </div>
                 </div>
@@ -151,7 +151,7 @@
                         <div class="org-icon"><i class="bi bi-search"></i></div>
                         <h5>Inspektorat</h5>
                         <p>Lembaga pengawas internal pemerintah daerah untuk menjamin akuntabilitas.</p>
-                        <a href="{{ url('/organisasi/inspektorat') }}" class="org-link">Selengkapnya <i
+                        <a href="https://inspektorat.karanganyarkab.go.id/" target="_blank" class="org-link">Selengkapnya <i
                                 class="bi bi-arrow-right"></i></a>
                     </div>
                 </div>
@@ -169,7 +169,7 @@
                         <div class="org-icon"><i class="bi bi-gear"></i></div>
                         <h5>Dinas Daerah</h5>
                         <p>Unsur pelaksana otonomi daerah yang menangani urusan pemerintahan tertentu.</p>
-                        <a href="{{ url('/organisasi/dinas') }}" class="org-link">Selengkapnya <i
+                        <a href="https://www.karanganyarkab.go.id/category/skpd/dinas/" target="_blank" class="org-link">Selengkapnya <i
                                 class="bi bi-arrow-right"></i></a>
                     </div>
                 </div>
@@ -178,7 +178,7 @@
                         <div class="org-icon"><i class="bi bi-geo-alt"></i></div>
                         <h5>Kecamatan</h5>
                         <p>Wilayah kerja camat sebagai perangkat daerah kabupaten.</p>
-                        <a href="{{ url('/organisasi/kecamatan') }}" class="org-link">Selengkapnya <i
+                        <a href="https://kec-karanganyar.kebumenkab.go.id/" target="_blank" class="org-link">Selengkapnya <i
                                 class="bi bi-arrow-right"></i></a>
                     </div>
                 </div>
@@ -196,7 +196,7 @@
                         <div class="org-icon"><i class="bi bi-hospital"></i></div>
                         <h5>Rumah Sakit Umum Daerah</h5>
                         <p>Penyedia layanan kesehatan bagi masyarakat Kabupaten Karanganyar.</p>
-                        <a href="{{ url('/organisasi/rsud') }}" class="org-link">Selengkapnya <i
+                        <a href="https://rsudkaranganyar.simkeskhanza.com/" target="_blank" class="org-link">Selengkapnya <i
                                 class="bi bi-arrow-right"></i></a>
                     </div>
                 </div>

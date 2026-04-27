@@ -103,7 +103,7 @@ section {
   color: var(--royal-blue);
 }
 
-.navbar-main .nav-link::after {
+.navbar-main .nav-link::before {
   content: '';
   position: absolute;
   bottom: 0;
@@ -116,8 +116,8 @@ section {
   border-radius: 3px 3px 0 0;
 }
 
-.navbar-main .nav-link:hover::after,
-.navbar-main .nav-link.active::after {
+.navbar-main .nav-link:hover::before,
+.navbar-main .nav-link.active::before {
   width: 70%;
 }
 
