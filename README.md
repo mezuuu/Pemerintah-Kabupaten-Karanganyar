@@ -17,7 +17,7 @@
 
 ## 📋 Daftar Isi
 
-- [Tentang Proyek](#-tentang-proyek)
+- [Tentang Proyek](#️-tentang-proyek)
 - [Screenshot Tampilan Aplikasi](#-screenshot-tampilan-aplikasi)
 - [Fitur Utama](#-fitur-utama)
 - [Teknologi yang Digunakan](#️-teknologi-yang-digunakan)
@@ -25,7 +25,7 @@
 - [Cara Instalasi & Menjalankan](#-cara-instalasi--menjalankan-local-development)
 - [Akun Akses Default](#-akun-akses-default-testing)
 - [Struktur Direktori](#-struktur-direktori-penting)
-- [Daftar Route Aplikasi](#-daftar-route-aplikasi)
+- [Daftar Route Aplikasi](#️-daftar-route-aplikasi)
 - [Skema Database](#️-skema-database)
 - [Arsitektur Keamanan](#-arsitektur-keamanan)
 
@@ -35,7 +35,7 @@
 
 **Portal Resmi Pemerintah Kabupaten Karanganyar** adalah aplikasi web berbasis **Laravel 10** yang dikembangkan sebagai pusat informasi, berita, dan layanan publik digital untuk warga Kabupaten Karanganyar, Jawa Tengah.
 
-Proyek ini dibangun selama program **Magang Kominfo** dan dirancang dengan dua lapisan utama:
+Proyek ini dibangun selama program **Magang MSIB di Dinas Komunikasi dan Informatika (Diskominfo)** dan dirancang dengan dua lapisan utama:
 
 | Lapisan | Keterangan |
 |---|---|
@@ -53,9 +53,9 @@ Halaman beranda yang dihadapi oleh seluruh masyarakat sebagai pengunjung. Menamp
 ![Beranda Portal Karanganyar](docs/screenshots/home-desktop.png)
 
 > **Komponen yang terlihat pada gambar di atas:**
-> - **Top Bar**: Tautan cepat ke Satudata, Opendata, PPID, Layanan Publik, SP4N Lapor, dan LaporGub.
+> - **Top Bar**: Tautan cepat ke Satudata, Opendata, PPID, Layanan Publik, SP4N Lapor, dan LaporGub — semua URL dinamis dari database.
 > - **Navbar Utama**: Logo Pemkab, menu Beranda, Profil, Perangkat Daerah, Berita, Aduan, Data — semua dengan dukungan dropdown dinamis.
-> - **Hero Section**: Slogan *"Selamat Datang di Kabupaten Karanganyar"*, foto Bupati **H. Rober Christanto, S.E., M.M.** dan Wakil Bupati **H. Adhe Eliana, S.E.**, serta tombol CTA "Layanan Publik".
+> - **Hero Section**: Slogan *"Selamat Datang di Kabupaten Karanganyar"*, foto Bupati **H. Rober Christanto, S.E., M.M.** dan Wakil Bupati **H. Adhe Eliana, S.E.**, dengan name tag yang dapat diatur posisi dan ukurannya secara independen.
 > - **Statistik Daerah**: 900K+ Penduduk, 17 Kecamatan, 177 Desa/Kelurahan, 20+ Layanan Online.
 
 ---
@@ -81,13 +81,12 @@ Panel administrasi khusus operator Diskominfo. Menyediakan statistik ringkas, ma
 | Fitur | Deskripsi |
 |---|---|
 | **Desain Modern & Responsif** | Antarmuka elegan menggunakan Bootstrap 5.3 & Vanilla CSS, dioptimalkan untuk Desktop, Tablet, dan Mobile. |
-| **Hero Section Dinamis** | Menampilkan foto kepala daerah, slogan, dan tombol call-to-action yang menarik. |
+| **Hero Section Dinamis** | Menampilkan foto kepala daerah dengan name tag Bupati & Wakil Bupati yang posisi serta ukurannya dapat diatur secara independen melalui CSS. |
 | **Statistik Daerah** | Kartu statistik animatif: jumlah penduduk, kecamatan, desa/kelurahan, dan layanan online. |
-| **Berita Otomatis (OG Image Scraper)** | Saat URL berita ditambahkan, sistem secara otomatis mengambil gambar thumbnail via PHP cURL dengan parsing meta tag `og:image` dan `twitter:image`. |
-| **Navigasi Dinamis** | Menu dropdown (Perangkat Daerah, Aduan, Data) diisi dari database—tidak di-hardcode—sehingga dapat diubah admin kapan saja. |
+| **Berita Real-time (OG Image Scraper)** | Berita yang ditampilkan di halaman publik langsung mengambil data dari database yang dikelola admin. Thumbnail diambil otomatis via PHP cURL dengan parsing meta tag `og:image`. |
+| **Navigasi & Link 100% Dinamis** | Seluruh link di halaman publik (Top Bar, Akses Cepat, Perangkat Daerah, Potensi, dan Aduan) langsung terhubung ke tabel `menu_links` di database. Setiap perubahan di admin langsung tercermin di frontend tanpa perlu edit kode. |
 | **GPR Widget Kominfo** | Terintegrasi dengan widget Government Public Relations (GPR) resmi Kominfo Pusat di bagian footer. |
-| **Tautan Layanan Publik** | Shortcut top-bar ke Satudata, Opendata, PPID, SP4N Lapor, dan LaporGub. |
-| **Auto-Logout Admin** | Jika seorang admin yang sedang login membuka halaman publik, sesi admin akan otomatis dihapus (middleware `LogoutOnPublicPages`). |
+| **No-Cache di Semua Halaman** | Header `Cache-Control: no-store` diterapkan juga pada route publik, sehingga browser selalu mengambil data terbaru dari server dan tidak menampilkan link lama dari cache. |
 
 ### 🛡️ Backend (Dashboard Admin)
 
@@ -95,10 +94,11 @@ Panel administrasi khusus operator Diskominfo. Menyediakan statistik ringkas, ma
 |---|---|
 | **Autentikasi Berlapis** | Sistem login khusus admin dengan proteksi No-Cache Headers untuk mencegah bypass via tombol *Back* browser. |
 | **Manajemen Berita (CRUD)** | Tambah, edit, dan hapus berita. Thumbnail diambil otomatis dari URL sumber. Mendukung refresh manual gambar OG. |
-| **Manajemen Menu Navbar** | Tambah, edit, dan hapus link pada menu navigasi publik (mendukung tipe Internal dan Eksternal, serta sub-menu). |
+| **Kelola Link Menu (MenuLinks)** | Edit URL untuk setiap item navigasi di halaman publik (Top Bar, Akses Cepat, Perangkat Daerah, Potensi, Aduan) secara real-time dari dashboard. Perubahan langsung muncul di website tanpa deploy ulang. |
 | **Manajemen Pengguna** | Registrasi bertahap: akun Editor baru **wajib disetujui** oleh Administrator sebelum dapat login. Admin dapat menyetujui, menolak, atau menghapus akun. |
 | **Sistem Role** | Dua level akses: `Administrator` (akses penuh) dan `Editor` (akses terbatas). |
 | **Dashboard Ringkasan** | Tampilan statistik total berita, total pengguna, dan daftar akun menunggu persetujuan secara *real-time*. |
+| **Penanganan Sesi Expired (419)** | Jika sesi admin habis (CSRF token expired), sistem otomatis mengarahkan kembali ke halaman login dengan pesan notifikasi, bukan menampilkan halaman error 419. |
 
 ---
 
@@ -174,7 +174,12 @@ DB_PORT=3306
 DB_DATABASE=portal_karanganyar
 DB_USERNAME=root
 DB_PASSWORD=
+
+SESSION_LIFETIME=10
+SESSION_DRIVER=file
 ```
+
+> ⚠️ `SESSION_LIFETIME=10` mengatur sesi admin akan berakhir setelah **10 menit tidak aktif**, demi keamanan.
 
 ### Langkah 5 — Generate Application Key
 
@@ -235,23 +240,24 @@ Setelah database selesai di-*seed*, gunakan kredensial berikut untuk masuk ke Da
 Pemerintah-Kabupaten-Karanganyar/
 │
 ├── app/
+│   ├── Exceptions/
+│   │   └── Handler.php                 ← Penanganan error global (termasuk 419 Session Expired)
 │   ├── Http/
 │   │   ├── Controllers/
 │   │   │   ├── Admin/                  ← Logika Panel Admin
 │   │   │   │   ├── DashboardController.php
 │   │   │   │   ├── NewsController.php      (CRUD Berita + OG Image Scraper)
 │   │   │   │   ├── UserController.php      (Kelola & Approve Akun)
-│   │   │   │   └── MenuLinkController.php  (Kelola Link Navbar)
+│   │   │   │   └── MenuLinkController.php  (Kelola Link Navbar & Halaman Publik)
 │   │   │   ├── Auth/
 │   │   │   │   └── LoginController.php     (Login, Logout, Registrasi)
 │   │   │   └── Frontend/
 │   │   │       └── HomeController.php      (Beranda, Berita, Layanan Publik)
 │   │   └── Middleware/
 │   │       ├── AdminApproved.php           (Cek status approval akun)
-│   │       ├── NoCacheHeaders.php          (Prevent browser back bypass)
-│   │       └── LogoutOnPublicPages.php     (Auto-logout admin di halaman publik)
+│   │       └── NoCacheHeaders.php          (Prevent browser cache — diterapkan ke semua route)
 │   └── Models/
-│       ├── MenuLink.php
+│       ├── MenuLink.php                ← Model untuk semua link dinamis halaman publik
 │       ├── News.php
 │       └── User.php
 │
@@ -259,20 +265,24 @@ Pemerintah-Kabupaten-Karanganyar/
 │   ├── migrations/                     ← Definisi skema tabel
 │   ├── seeders/
 │   │   ├── AdminSeeder.php             (Seed akun admin default)
-│   │   ├── MenuLinkSeeder.php          (Seed link navigasi default)
+│   │   ├── MenuLinkSeeder.php          (Seed link navigasi & halaman publik default)
 │   │   └── DatabaseSeeder.php
 │   └── portal_karanganyar.sql          ← Dump SQL cadangan database
 │
 ├── resources/
 │   └── views/
 │       ├── admin/                      ← Template Blade panel admin
+│       │   ├── login.blade.php             (Form login + tampilan pesan sesi expired)
+│       │   └── menu-links/index.blade.php  (Halaman kelola link menu)
 │       └── frontend/                   ← Template Blade halaman publik
+│           ├── home.blade.php              (Semua link menggunakan MenuLink::where() dinamis)
+│           └── layouts/app.blade.php       (Top bar menggunakan link dinamis dari database)
 │
 ├── routes/
-│   └── web.php                         ← Definisi semua route aplikasi
+│   └── web.php                         ← Semua route (publik + admin), publik pakai NoCacheHeaders
 │
 ├── public/
-│   ├── css/app.css                     ← Custom styling CSS utama
+│   ├── css/app.css                     ← Custom styling CSS (termasuk hero name tag Bupati & Wakil)
 │   └── images/                         ← Aset gambar statis (logo, header, dll.)
 │
 └── docs/
@@ -285,7 +295,7 @@ Pemerintah-Kabupaten-Karanganyar/
 
 ## 🗺️ Daftar Route Aplikasi
 
-### Route Publik (Frontend)
+### Route Publik (Frontend) — dengan `NoCacheHeaders`
 
 | Method | URL | Nama Route | Keterangan |
 |---|---|---|---|
@@ -314,7 +324,7 @@ Pemerintah-Kabupaten-Karanganyar/
 | `GET` | `/admin` | `admin.dashboard` | Dashboard Utama |
 | `GET/POST` | `/admin/news` | `admin.news.*` | Manajemen Berita (CRUD) |
 | `GET/PUT/DELETE` | `/admin/users` | `admin.users.*` | Manajemen Pengguna |
-| `GET/POST/PUT/DELETE` | `/admin/menu-links` | `admin.menu-links.*` | Manajemen Link Navbar |
+| `GET/POST/PUT/DELETE` | `/admin/menu-links` | `admin.menu-links.*` | Manajemen Link Seluruh Halaman Publik |
 
 ---
 
@@ -339,7 +349,7 @@ Pemerintah-Kabupaten-Karanganyar/
 | `id` | BIGINT (PK) | Primary key |
 | `headline` | VARCHAR(255) | Judul berita |
 | `description` | TEXT | Ringkasan isi berita |
-| `link` | TEXT | URL sumber berita asli |
+| `link` | TEXT | URL sumber berita asli (dapat diklik di frontend) |
 | `og_image` | TEXT | URL gambar thumbnail (hasil scraping OG) |
 | `category` | VARCHAR(50) | Kategori berita |
 | `created_by` | BIGINT (FK) | ID pengguna pembuat |
@@ -350,30 +360,32 @@ Pemerintah-Kabupaten-Karanganyar/
 | Kolom | Tipe | Keterangan |
 |---|---|---|
 | `id` | BIGINT (PK) | Primary key |
-| `label` | VARCHAR(255) | Teks yang tampil di menu |
-| `url` | TEXT | URL tujuan link |
-| `type` | ENUM | `internal` / `external` |
-| `parent_menu` | VARCHAR(100) | Nama dropdown induk (misal: `perangkat-daerah`) |
-| `order` | INTEGER | Urutan tampil di navbar |
+| `group` | VARCHAR(100) | Kategori link (misal: `Aduan`, `Perangkat Daerah`, `Data`) |
+| `label` | VARCHAR(255) | Nama/teks link yang dicocokkan di frontend |
+| `url` | TEXT | URL tujuan link (internal atau eksternal) |
+| `is_external` | BOOLEAN | Apakah link dibuka di tab baru |
+| `order` | INTEGER | Urutan tampil dalam grupnya |
 | `created_at` | TIMESTAMP | Waktu dibuat |
+
+> **Catatan:** Kolom `label` digunakan sebagai kunci pencarian di frontend. Contoh: `MenuLink::where('label', 'Statistik')->value('url')`. Pastikan label di database dan di kode view selalu konsisten.
 
 ---
 
 ## 🔒 Arsitektur Keamanan
 
-Sistem ini menerapkan beberapa lapisan keamanan khusus:
+Sistem ini menerapkan beberapa lapisan keamanan:
 
 ### 1. `NoCacheHeaders` Middleware
-Menambahkan HTTP header `Cache-Control: no-cache, no-store, must-revalidate` pada seluruh route admin. Mencegah browser menyimpan halaman admin dalam cache, sehingga pengguna tidak dapat mengakses halaman admin yang sudah di-logout menggunakan tombol *Back* browser.
+Menambahkan HTTP header `Cache-Control: no-cache, no-store, must-revalidate` pada **seluruh route** (admin maupun publik). Ini memastikan browser selalu mengambil data terbaru dari server — mencegah halaman lama (dengan link yang sudah diubah admin) tampil dari cache browser.
 
-### 2. `LogoutOnPublicPages` Middleware
-Setiap kali seorang admin yang sedang login mengakses halaman publik (`/`, `/berita`, dll.), middleware ini secara otomatis menghapus sesi login admin tersebut. Ini memastikan tidak ada sesi admin yang "bocor" ke halaman publik.
-
-### 3. `AdminApproved` Middleware
+### 2. `AdminApproved` Middleware
 Memverifikasi bahwa akun yang sedang login memiliki status `is_approved = true`. Jika akun baru terdaftar (Editor belum disetujui), middleware ini memblokir akses ke dashboard dan menampilkan pesan informasi.
 
-### 4. CSRF Protection
-Semua form yang melakukan operasi `POST`, `PUT`, dan `DELETE` dilindungi dengan token CSRF bawaan Laravel (`@csrf`), mencegah serangan Cross-Site Request Forgery.
+### 3. CSRF Protection & Penanganan 419
+Semua form yang melakukan operasi `POST`, `PUT`, dan `DELETE` dilindungi dengan token CSRF bawaan Laravel (`@csrf`). Jika sesi admin habis dan token expired, `Handler.php` secara otomatis menangkap `TokenMismatchException` dan mengarahkan kembali ke halaman login dengan pesan **"Sesi telah berakhir. Silakan coba lagi."** — bukan menampilkan error 419 yang membingungkan.
+
+### 4. Session Security
+Session admin dikonfigurasi dengan `SESSION_LIFETIME=10` (10 menit inaktivitas = otomatis logout) untuk meminimalisir risiko jika komputer admin ditinggal tanpa dikunci.
 
 ---
 
