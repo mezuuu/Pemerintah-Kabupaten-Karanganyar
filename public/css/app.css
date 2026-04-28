@@ -169,6 +169,8 @@ section {
   gap: 12px;
   margin-top: -10px;
   position: relative;
+  left: -13px;
+  top: -13px;
   z-index: 20;
 }
 
@@ -790,7 +792,8 @@ body #gpr-kominfo-widget-footer {
     transition: transform 0.3s ease;
     border: none;
     font-family: 'bootstrap-icons';
-    content: "\F282"; /* bi-chevron-down */
+    content: "\F282";
+    /* bi-chevron-down */
     font-size: 0.85rem;
     vertical-align: middle;
   }
@@ -815,7 +818,6 @@ body #gpr-kominfo-widget-footer {
     font-size: 0.88rem;
   }
 
-  /* Prevent dropdown from getting "stuck" by ensuring proper toggle */
   .navbar-main .dropdown-toggle[aria-expanded="true"] {
     color: var(--royal-blue);
   }
@@ -875,13 +877,11 @@ body #gpr-kominfo-widget-footer {
     flex-wrap: nowrap;
     justify-content: center;
     width: 80%;
-    /* Adjust this percentage to move them closer/further from edge */
     margin: -5px auto 0;
   }
 
   .hero-name-tag-item {
     width: 48%;
-    /* fit side by side */
   }
 
   .hero-name-tag-item .tag-top {
