@@ -62,6 +62,9 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="mainNav">
+                @php
+                    $menuLinks = \App\Models\MenuLink::orderBy('order')->get()->groupBy('group');
+                @endphp
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="{{ url('/') }}">Beranda</a>
@@ -69,33 +72,26 @@
 
                     {{-- Profil Dropdown --}}
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle {{ Request::is('profil*') || Request::is('legislatif*') || Request::is('pejabat*') || Request::is('rlppd*') ? 'active' : '' }}"
-                            href="#" data-bs-toggle="dropdown">Profil</a>
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Profil</a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="{{ url('/profil') }}">Profil Kabupaten</a></li>
-                            <li><a class="dropdown-item" href="{{ url('/legislatif') }}">Legislatif</a></li>
-                            <li><a class="dropdown-item" href="{{ url('/pejabat') }}">Daftar Pejabat</a></li>
-                            <li><a class="dropdown-item" href="{{ url('/rlppd') }}">RLPPD</a></li>
-                            <li><a class="dropdown-item" href="https://pesonakaranganyar.karanganyarkab.go.id/"
-                                    target="_blank">Pariwisata</a></li>
+                            @if(isset($menuLinks['Profil']))
+                                @foreach($menuLinks['Profil'] as $link)
+                                    <li><a class="dropdown-item" href="{{ $link->url }}" {{ $link->is_external ? 'target=_blank' : '' }}>{{ $link->label }}</a></li>
+                                @endforeach
+                            @endif
                         </ul>
                     </li>
 
                     {{-- Perangkat Daerah Dropdown --}}
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle {{ Request::is('organisasi*') ? 'active' : '' }}" href="#"
-                            data-bs-toggle="dropdown">Perangkat Daerah</a>
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Perangkat Daerah</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="https://setda.karanganyarkab.go.id/" target="_blank">Sekretariat Daerah</a></li>
-                            <li><a class="dropdown-item" href="https://dprd.karanganyarkab.go.id/struktur-organisasi-dprd-kabupaten-karanganyar/" target="_blank">Sekretariat DPRD</a></li>
-                            <li><a class="dropdown-item" href="https://inspektorat.karanganyarkab.go.id/" target="_blank">Inspektorat</a></li>
-                            <li><a class="dropdown-item" href="https://www.karanganyarkab.go.id/category/skpd/dinas/" target="_blank">Dinas</a></li>
-                            <li><a class="dropdown-item" href="{{ url('/organisasi/badan') }}">Badan</a></li>
-                            <li><a class="dropdown-item" href="https://kec-karanganyar.kebumenkab.go.id/" target="_blank">Kecamatan</a></li>
-                            <li><a class="dropdown-item" href="{{ url('/organisasi/kelurahan') }}">Kelurahan</a></li>
-                            <li><a class="dropdown-item"
-                                    href="https://rsudkaranganyar.simkeskhanza.com/" target="_blank">RSUD (Rumah Sakit Daerah)</a></li>
-                            <li><a class="dropdown-item" href="{{ url('/organisasi/bumd') }}">BUMD</a></li>
+                            @if(isset($menuLinks['Perangkat Daerah']))
+                                @foreach($menuLinks['Perangkat Daerah'] as $link)
+                                    <li><a class="dropdown-item" href="{{ $link->url }}" {{ $link->is_external ? 'target=_blank' : '' }}>{{ $link->label }}</a></li>
+                                @endforeach
+                            @endif
                         </ul>
                     </li>
 
@@ -106,33 +102,25 @@
 
                     {{-- Aduan Dropdown --}}
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle {{ Request::is('wbs*') || Request::is('suara-masyarakat*') ? 'active' : '' }}"
-                            href="#" data-bs-toggle="dropdown">Aduan</a>
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Aduan</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{ url('/wbs') }}">Whistleblowing System</a></li>
-                            <li><a class="dropdown-item" href="{{ url('/suara-masyarakat') }}">Suara Masyarakat</a></li>
-                            <li><a class="dropdown-item" href="https://laporgub.jatengprov.go.id/"
-                                    target="_blank">Laporgub</a></li>
-                            <li><a class="dropdown-item" href="https://www.lapor.go.id/" target="_blank">SP4N Lapor</a>
-                            </li>
-                            <li><a class="dropdown-item" href="https://api.whatsapp.com/send?phone=628112629999"
-                                    target="_blank">Sapamas (WA)</a></li>
+                            @if(isset($menuLinks['Aduan']))
+                                @foreach($menuLinks['Aduan'] as $link)
+                                    <li><a class="dropdown-item" href="{{ $link->url }}" {{ $link->is_external ? 'target=_blank' : '' }}>{{ $link->label }}</a></li>
+                                @endforeach
+                            @endif
                         </ul>
                     </li>
 
                     {{-- Data Dropdown --}}
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle {{ Request::is('transparansi-anggaran*') || Request::is('hibah-dan-bansos*') || Request::is('statistik*') ? 'active' : '' }}"
-                            href="#" data-bs-toggle="dropdown">Data</a>
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Data</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="https://satudata.karanganyarkab.go.id/"
-                                    target="_blank">Satudata</a></li>
-                            <li><a class="dropdown-item" href="https://opendata.karanganyarkab.go.id/"
-                                    target="_blank">Opendata</a></li>
-                            <li><a class="dropdown-item" href="{{ url('/transparansi-anggaran') }}">Keuangan Daerah</a>
-                            </li>
-                            <li><a class="dropdown-item" href="{{ url('/hibah-dan-bansos') }}">Hibah & Bansos</a></li>
-                            <li><a class="dropdown-item" href="{{ url('/statistik') }}">Statistik</a></li>
+                            @if(isset($menuLinks['Data']))
+                                @foreach($menuLinks['Data'] as $link)
+                                    <li><a class="dropdown-item" href="{{ $link->url }}" {{ $link->is_external ? 'target=_blank' : '' }}>{{ $link->label }}</a></li>
+                                @endforeach
+                            @endif
                         </ul>
                     </li>
                 </ul>
@@ -235,6 +223,7 @@
 
     {{-- Scroll Top Visibility --}}
     <script>
+        // Scroll Top Button Visibility
         window.addEventListener('scroll', function () {
             const btn = document.getElementById('scrollTopBtn');
             if (window.scrollY > 300) {
@@ -242,6 +231,80 @@
             } else {
                 btn.classList.remove('visible');
             }
+        });
+
+        // Fade-In Animation Observer
+        document.addEventListener('DOMContentLoaded', function() {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target); // Animate only once
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-in-section').forEach((section) => {
+                observer.observe(section);
+            });
+
+            // Mobile navbar fix: close other dropdowns when one opens
+            if (window.innerWidth < 992) {
+                document.querySelectorAll('.navbar-main .dropdown-toggle').forEach(toggle => {
+                    toggle.addEventListener('click', function(e) {
+                        // Close all other open dropdowns
+                        document.querySelectorAll('.navbar-main .dropdown-menu.show').forEach(menu => {
+                            if (menu !== this.nextElementSibling) {
+                                menu.classList.remove('show');
+                                menu.previousElementSibling.classList.remove('show');
+                                menu.previousElementSibling.setAttribute('aria-expanded', 'false');
+                            }
+                        });
+                    });
+                });
+
+                // Close navbar collapse when a dropdown item is clicked
+                document.querySelectorAll('.navbar-main .dropdown-item').forEach(item => {
+                    item.addEventListener('click', function() {
+                        const navCollapse = document.getElementById('mainNav');
+                        if (navCollapse && navCollapse.classList.contains('show')) {
+                            const bsCollapse = bootstrap.Collapse.getInstance(navCollapse);
+                            if (bsCollapse) bsCollapse.hide();
+                        }
+                    });
+                });
+            }
+
+            // Auto-close navbar and dropdowns when user scrolls the page (Mobile & PC)
+            let isScrolling;
+            window.addEventListener('scroll', function() {
+                // Clear timeout to prevent execution during fast scrolling
+                window.clearTimeout(isScrolling);
+
+                isScrolling = setTimeout(function() {
+                    // Close mobile navbar collapse
+                    const navCollapse = document.getElementById('mainNav');
+                    if (navCollapse && navCollapse.classList.contains('show')) {
+                        const bsCollapse = bootstrap.Collapse.getInstance(navCollapse);
+                        if (bsCollapse) bsCollapse.hide();
+                    }
+
+                    // Close PC and Mobile dropdown menus
+                    document.querySelectorAll('.navbar-main .dropdown-menu.show').forEach(menu => {
+                        menu.classList.remove('show');
+                        if (menu.previousElementSibling) {
+                            menu.previousElementSibling.classList.remove('show');
+                            menu.previousElementSibling.setAttribute('aria-expanded', 'false');
+                        }
+                    });
+                }, 66); // Execute after 66ms of no scroll events (~15fps)
+            }, { passive: true });
         });
     </script>
 

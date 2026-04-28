@@ -1,7 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Frontend;
 
+use App\Http\Controllers\Controller;
+use App\Models\News;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -11,7 +13,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $news = News::latest()->take(3)->get();
+        return view('frontend.home', compact('news'));
     }
 
     /**
@@ -19,7 +22,7 @@ class HomeController extends Controller
      */
     public function profil()
     {
-        return view('pages.profil');
+        return view('frontend.pages.profil');
     }
 
     /**
@@ -27,7 +30,8 @@ class HomeController extends Controller
      */
     public function berita()
     {
-        return view('pages.berita');
+        $news = News::latest()->paginate(9);
+        return view('frontend.pages.berita', compact('news'));
     }
 
     /**
@@ -35,6 +39,6 @@ class HomeController extends Controller
      */
     public function layananPublik()
     {
-        return view('pages.layanan-publik');
+        return view('frontend.pages.layanan-publik');
     }
 }
