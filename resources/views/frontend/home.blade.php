@@ -24,11 +24,11 @@
 
                     {{-- Name Tags --}}
                     <div class="hero-name-tags-row fade-in-section delay-400">
-                        <div class="hero-name-tag-item">
+                        <div class="hero-name-tag-item tag-bupati">
                             <div class="tag-top">H. Rober Christanto S.E., M.M.</div>
                             <div class="tag-bottom">Bupati Karanganyar</div>
                         </div>
-                        <div class="hero-name-tag-item">
+                        <div class="hero-name-tag-item tag-wakil">
                             <div class="tag-top">H. Adhe Eliana, S.E.</div>
                             <div class="tag-bottom">Wakil Bupati Karanganyar</div>
                         </div>
@@ -96,7 +96,7 @@
                     </a>
                 </div>
                 <div class="col-6 col-md-4 col-lg-2">
-                    <a href="https://www.karanganyarkab.go.id/wbs/" target="_blank" class="text-decoration-none">
+                    <a href="{{ \App\Models\MenuLink::where('label', 'Whistleblowing System')->value('url') ?? 'https://www.karanganyarkab.go.id/wbs/' }}" target="_blank" class="text-decoration-none">
                         <div class="quick-access-card fade-in-section">
                             <div class="qa-icon"><i class="bi bi-shield-exclamation"></i></div>
                             <h6>WBS</h6>
@@ -105,7 +105,7 @@
                     </a>
                 </div>
                 <div class="col-6 col-md-4 col-lg-2">
-                    <a href="https://www.karanganyarkab.go.id/suara-masyarakat/" target="_blank"
+                    <a href="{{ \App\Models\MenuLink::where('label', 'Suara Masyarakat')->value('url') ?? 'https://www.karanganyarkab.go.id/suara-masyarakat/' }}" target="_blank"
                         class="text-decoration-none">
                         <div class="quick-access-card fade-in-section">
                             <div class="qa-icon"><i class="bi bi-megaphone"></i></div>
@@ -115,7 +115,7 @@
                     </a>
                 </div>
                 <div class="col-6 col-md-4 col-lg-2">
-                    <a href="https://www.karanganyarkab.go.id/transparansi-anggaran-2/" target="_blank"
+                    <a href="{{ \App\Models\MenuLink::where('label', 'Keuangan Daerah')->value('url') ?? 'https://www.karanganyarkab.go.id/transparansi-anggaran-2/' }}" target="_blank"
                         class="text-decoration-none">
                         <div class="quick-access-card fade-in-section">
                             <div class="qa-icon"><i class="bi bi-cash-stack"></i></div>
@@ -125,7 +125,7 @@
                     </a>
                 </div>
                 <div class="col-6 col-md-4 col-lg-2">
-                    <a href="https://www.karanganyarkab.go.id/statistik/" target="_blank" class="text-decoration-none">
+                    <a href="{{ \App\Models\MenuLink::where('label', 'Statistik')->value('url') ?? 'https://www.karanganyarkab.go.id/statistik/' }}" target="_blank" class="text-decoration-none">
                         <div class="quick-access-card fade-in-section">
                             <div class="qa-icon"><i class="bi bi-bar-chart-line"></i></div>
                             <h6>Statistik</h6>
@@ -151,7 +151,7 @@
                         <div class="org-icon"><i class="bi bi-building"></i></div>
                         <h5>Sekretariat Daerah</h5>
                         <p>Pusat administrasi dan koordinasi pemerintahan daerah Kabupaten Karanganyar.</p>
-                        <a href="https://setda.karanganyarkab.go.id/" target="_blank" class="org-link">Selengkapnya <i
+                        <a href="{{ \App\Models\MenuLink::where('label', 'Sekretariat Daerah')->value('url') ?? 'https://setda.karanganyarkab.go.id/' }}" target="_blank" class="org-link">Selengkapnya <i
                                 class="bi bi-arrow-right"></i></a>
                     </div>
                 </div>
@@ -160,7 +160,7 @@
                         <div class="org-icon"><i class="bi bi-bank"></i></div>
                         <h5>Sekretariat DPRD</h5>
                         <p>Mendukung kelancaran tugas dan fungsi Dewan Perwakilan Rakyat Daerah.</p>
-                        <a href="https://dprd.karanganyarkab.go.id/struktur-organisasi-dprd-kabupaten-karanganyar/"
+                        <a href="{{ \App\Models\MenuLink::where('label', 'Sekretariat DPRD')->value('url') ?? 'https://dprd.karanganyarkab.go.id/' }}"
                             target="_blank" class="org-link">Selengkapnya <i class="bi bi-arrow-right"></i></a>
                     </div>
                 </div>
@@ -169,7 +169,7 @@
                         <div class="org-icon"><i class="bi bi-search"></i></div>
                         <h5>Inspektorat</h5>
                         <p>Lembaga pengawas internal pemerintah daerah untuk menjamin akuntabilitas.</p>
-                        <a href="https://inspektorat.karanganyarkab.go.id/" target="_blank" class="org-link">Selengkapnya <i
+                        <a href="{{ \App\Models\MenuLink::where('label', 'Inspektorat')->value('url') ?? 'https://inspektorat.karanganyarkab.go.id/' }}" target="_blank" class="org-link">Selengkapnya <i
                                 class="bi bi-arrow-right"></i></a>
                     </div>
                 </div>
@@ -178,7 +178,7 @@
                         <div class="org-icon"><i class="bi bi-diagram-3"></i></div>
                         <h5>Badan Daerah</h5>
                         <p>Lembaga teknis daerah yang menangani fungsi penunjang urusan pemerintahan.</p>
-                        <a href="https://www.karanganyarkab.go.id/category/skpd/badan/" target="_blank"
+                        <a href="{{ \App\Models\MenuLink::where('label', 'Badan')->value('url') ?? 'https://www.karanganyarkab.go.id/category/skpd/badan/' }}" target="_blank"
                             class="org-link">Selengkapnya <i class="bi bi-arrow-right"></i></a>
                     </div>
                 </div>
@@ -187,7 +187,7 @@
                         <div class="org-icon"><i class="bi bi-gear"></i></div>
                         <h5>Dinas Daerah</h5>
                         <p>Unsur pelaksana otonomi daerah yang menangani urusan pemerintahan tertentu.</p>
-                        <a href="https://www.karanganyarkab.go.id/category/skpd/dinas/" target="_blank"
+                        <a href="{{ \App\Models\MenuLink::where('label', 'Dinas')->value('url') ?? 'https://www.karanganyarkab.go.id/category/skpd/dinas/' }}" target="_blank"
                             class="org-link">Selengkapnya <i class="bi bi-arrow-right"></i></a>
                     </div>
                 </div>
@@ -196,7 +196,7 @@
                         <div class="org-icon"><i class="bi bi-geo-alt"></i></div>
                         <h5>Kecamatan</h5>
                         <p>Wilayah kerja camat sebagai perangkat daerah kabupaten.</p>
-                        <a href="https://kec-karanganyar.kebumenkab.go.id/" target="_blank" class="org-link">Selengkapnya <i
+                        <a href="{{ \App\Models\MenuLink::where('label', 'Kecamatan')->value('url') ?? 'https://www.karanganyarkab.go.id/kecamatan/' }}" target="_blank" class="org-link">Selengkapnya <i
                                 class="bi bi-arrow-right"></i></a>
                     </div>
                 </div>
@@ -205,7 +205,7 @@
                         <div class="org-icon"><i class="bi bi-house-door"></i></div>
                         <h5>Kelurahan</h5>
                         <p>Wilayah kerja lurah sebagai perangkat kecamatan di Kabupaten Karanganyar.</p>
-                        <a href="https://www.karanganyarkab.go.id/kelurahan/" target="_blank" class="org-link">Selengkapnya
+                        <a href="{{ \App\Models\MenuLink::where('label', 'Kelurahan')->value('url') ?? 'https://www.karanganyarkab.go.id/kelurahan/' }}" target="_blank" class="org-link">Selengkapnya
                             <i class="bi bi-arrow-right"></i></a>
                     </div>
                 </div>
@@ -214,7 +214,7 @@
                         <div class="org-icon"><i class="bi bi-hospital"></i></div>
                         <h5>Rumah Sakit Umum Daerah</h5>
                         <p>Penyedia layanan kesehatan bagi masyarakat Kabupaten Karanganyar.</p>
-                        <a href="https://rsudkaranganyar.simkeskhanza.com/" target="_blank" class="org-link">Selengkapnya <i
+                        <a href="{{ \App\Models\MenuLink::where('label', 'RSUD (Rumah Sakit Daerah)')->value('url') ?? 'https://rsudkaranganyar.simkeskhanza.com/' }}" target="_blank" class="org-link">Selengkapnya <i
                                 class="bi bi-arrow-right"></i></a>
                     </div>
                 </div>
@@ -223,7 +223,7 @@
                         <div class="org-icon"><i class="bi bi-briefcase"></i></div>
                         <h5>BUMD</h5>
                         <p>Badan Usaha Milik Daerah yang menunjang perekonomian daerah.</p>
-                        <a href="https://www.karanganyarkab.go.id/category/bumd/" target="_blank"
+                        <a href="{{ \App\Models\MenuLink::where('label', 'BUMD')->value('url') ?? 'https://www.karanganyarkab.go.id/category/bumd/' }}" target="_blank"
                             class="org-link">Selengkapnya <i class="bi bi-arrow-right"></i></a>
                     </div>
                 </div>
@@ -241,7 +241,7 @@
             </div>
             <div class="row g-4">
                 <div class="col-md-6 col-lg-3">
-                    <a href="https://pesonakaranganyar.karanganyarkab.go.id/" target="_blank" class="text-decoration-none">
+                    <a href="{{ \App\Models\MenuLink::where('label', 'Pariwisata')->value('url') ?? 'https://pesonakaranganyar.karanganyarkab.go.id/' }}" target="_blank" class="text-decoration-none">
                         <div class="potensi-card fade-in-section">
                             <div class="potensi-bg"
                                 style="background-image: url('https://widyalokawisata.com/wp-content/uploads/2024/04/Air-Terjun-Grojogan-Sewu-scaled.webp');">
@@ -255,7 +255,7 @@
                     </a>
                 </div>
                 <div class="col-md-6 col-lg-3">
-                    <a href="https://www.karanganyarkab.go.id/transparansi-anggaran-2/" target="_blank"
+                    <a href="{{ \App\Models\MenuLink::where('label', 'Keuangan Daerah')->value('url') ?? 'https://www.karanganyarkab.go.id/transparansi-anggaran-2/' }}" target="_blank"
                         class="text-decoration-none">
                         <div class="potensi-card fade-in-section">
                             <div class="potensi-bg"
@@ -270,7 +270,7 @@
                     </a>
                 </div>
                 <div class="col-md-6 col-lg-3">
-                    <a href="https://satudata.karanganyarkab.go.id/" target="_blank" class="text-decoration-none">
+                    <a href="{{ \App\Models\MenuLink::where('label', 'Satudata')->value('url') ?? 'https://satudata.karanganyarkab.go.id/' }}" target="_blank" class="text-decoration-none">
                         <div class="potensi-card fade-in-section">
                             <div class="potensi-bg"
                                 style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80');">
@@ -284,7 +284,7 @@
                     </a>
                 </div>
                 <div class="col-md-6 col-lg-3">
-                    <a href="https://www.karanganyarkab.go.id/hibah-dan-bansos/" target="_blank"
+                    <a href="{{ \App\Models\MenuLink::where('label', 'Hibah & Bansos')->value('url') ?? 'https://www.karanganyarkab.go.id/hibah-dan-bansos/' }}" target="_blank"
                         class="text-decoration-none">
                         <div class="potensi-card fade-in-section">
                             <div class="potensi-bg"
@@ -312,7 +312,7 @@
             </div>
             <div class="row g-4 justify-content-center">
                 <div class="col-6 col-md-4 col-lg">
-                    <a href="{{ url('/wbs') }}" class="text-decoration-none text-white">
+                    <a href="{{ \App\Models\MenuLink::where('label', 'Whistleblowing System')->value('url') ?? '#' }}" target="_blank" class="text-decoration-none text-white">
                         <div class="aduan-card fade-in-section">
                             <i class="bi bi-shield-lock"></i>
                             <h6>Whistleblowing System</h6>
@@ -321,7 +321,7 @@
                     </a>
                 </div>
                 <div class="col-6 col-md-4 col-lg">
-                    <a href="{{ url('/suara-masyarakat') }}" class="text-decoration-none text-white">
+                    <a href="{{ \App\Models\MenuLink::where('label', 'Suara Masyarakat')->value('url') ?? '#' }}" target="_blank" class="text-decoration-none text-white">
                         <div class="aduan-card fade-in-section">
                             <i class="bi bi-chat-left-text"></i>
                             <h6>Suara Masyarakat</h6>
@@ -330,7 +330,7 @@
                     </a>
                 </div>
                 <div class="col-6 col-md-4 col-lg">
-                    <a href="https://laporgub.jatengprov.go.id/" target="_blank" class="text-decoration-none text-white">
+                    <a href="{{ \App\Models\MenuLink::where('label', 'Laporgub')->value('url') ?? 'https://laporgub.jatengprov.go.id/' }}" target="_blank" class="text-decoration-none text-white">
                         <div class="aduan-card fade-in-section">
                             <i class="bi bi-flag"></i>
                             <h6>Laporgub</h6>
@@ -339,7 +339,7 @@
                     </a>
                 </div>
                 <div class="col-6 col-md-4 col-lg">
-                    <a href="https://www.lapor.go.id/" target="_blank" class="text-decoration-none text-white">
+                    <a href="{{ \App\Models\MenuLink::where('label', 'SP4N Lapor')->value('url') ?? 'https://www.lapor.go.id/' }}" target="_blank" class="text-decoration-none text-white">
                         <div class="aduan-card fade-in-section">
                             <i class="bi bi-send"></i>
                             <h6>SP4N Lapor</h6>
@@ -348,7 +348,7 @@
                     </a>
                 </div>
                 <div class="col-6 col-md-4 col-lg">
-                    <a href="https://api.whatsapp.com/send?phone=628112629999" target="_blank"
+                    <a href="{{ \App\Models\MenuLink::where('label', 'Sapamas (WA)')->value('url') ?? 'https://api.whatsapp.com/send?phone=628112629999' }}" target="_blank"
                         class="text-decoration-none text-white">
                         <div class="aduan-card fade-in-section">
                             <i class="bi bi-whatsapp"></i>

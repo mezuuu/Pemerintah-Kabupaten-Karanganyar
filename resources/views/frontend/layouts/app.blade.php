@@ -31,17 +31,17 @@
     <div class="top-bar d-none d-lg-block">
         <div class="container d-flex justify-content-between align-items-center">
             <div>
-                <a href="https://satudata.karanganyarkab.go.id/" target="_blank"><i class="bi bi-database me-1"></i>
+                <a href="{{ \App\Models\MenuLink::where('label', 'Satudata')->value('url') ?? 'https://satudata.karanganyarkab.go.id/' }}" target="_blank"><i class="bi bi-database me-1"></i>
                     Satudata</a>
-                <a href="https://opendata.karanganyarkab.go.id/" target="_blank"><i class="bi bi-folder2-open me-1"></i>
+                <a href="{{ \App\Models\MenuLink::where('label', 'Opendata')->value('url') ?? 'https://opendata.karanganyarkab.go.id/' }}" target="_blank"><i class="bi bi-folder2-open me-1"></i>
                     Opendata</a>
                 <a href="https://ppid.karanganyarkab.go.id/" target="_blank"><i class="bi bi-info-circle me-1"></i>
                     PPID</a>
                 <a href="{{ url('/layanan-publik') }}"><i class="bi bi-headset me-1"></i> Layanan Publik</a>
             </div>
             <div class="top-bar-right">
-                <a href="https://www.lapor.go.id/" target="_blank">SP4N Lapor</a>
-                <a href="https://laporgub.jatengprov.go.id/" target="_blank">Laporgub</a>
+                <a href="{{ \App\Models\MenuLink::where('label', 'SP4N Lapor')->value('url') ?? 'https://www.lapor.go.id/' }}" target="_blank">SP4N Lapor</a>
+                <a href="{{ \App\Models\MenuLink::where('label', 'Laporgub')->value('url') ?? 'https://laporgub.jatengprov.go.id/' }}" target="_blank">Laporgub</a>
             </div>
         </div>
     </div>

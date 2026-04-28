@@ -162,14 +162,21 @@ section {
   z-index: 1;
 }
 
+.hero-bupati-img {
+  max-width: 700px;
+  margin-left: -100px;
+  margin-top: 10px;
+  height: 400;
+}
+
 /* --- Hero Name Tags (Unified Flex Row) --- */
 .hero-name-tags-row {
   display: flex;
   justify-content: center;
-  gap: 12px;
-  margin-top: -10px;
+  gap: 60px;
+  margin-top: -15px;
   position: relative;
-  left: -13px;
+  left: -20px;
   top: -13px;
   z-index: 20;
 }
@@ -204,6 +211,36 @@ section {
   text-transform: uppercase;
   font-family: 'Inter', sans-serif;
   white-space: nowrap;
+}
+
+/* ===== BUPATI NAME TAG ===== */
+/* Bupati - Background Merah (Nama) */
+.tag-bupati .tag-top {
+  min-width: 230px;
+  text-align: center;
+  margin-left: 35px;
+}
+
+/* Bupati - Background Putih (Jabatan) */
+.tag-bupati .tag-bottom {
+  min-width: 200px;
+  text-align: center;
+  margin-left: 35px;
+}
+
+/* ===== WAKIL BUPATI NAME TAG ===== */
+/* Wakil Bupati - Background Merah (Nama) */
+.tag-wakil .tag-top {
+  min-width: 210px;
+  text-align: center;
+  margin-left: -37px;
+}
+
+/* Wakil Bupati - Background Putih (Jabatan) */
+.tag-wakil .tag-bottom {
+  min-width: 240px;
+  text-align: center;
+  margin-left: -37px;
 }
 
 .hero-section h1 {

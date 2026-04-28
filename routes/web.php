@@ -17,7 +17,7 @@ use App\Http\Controllers\Admin\MenuLinkController;
 // ===================================================================
 // PUBLIC ROUTES
 // ===================================================================
-Route::group([], function () {
+Route::middleware([\App\Http\Middleware\NoCacheHeaders::class])->group(function () {
     // === Beranda ===
     Route::get('/', [HomeController::class, 'index'])->name('home');
 
