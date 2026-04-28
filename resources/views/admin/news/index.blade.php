@@ -28,8 +28,8 @@
                     @forelse($news as $item)
                         <tr>
                             <td>
-                                @if($item->og_image)
-                                    <img src="{{ $item->og_image }}" alt="" style="width:70px; height:45px; object-fit:cover; border-radius:6px;">
+                                @if($item->display_image)
+                                    <img src="{{ $item->display_image }}" alt="" style="width:70px; height:45px; object-fit:cover; border-radius:6px;">
                                 @else
                                     <div style="width:70px; height:45px; background:#f0f0f0; border-radius:6px; display:flex; align-items:center; justify-content:center;">
                                         <i class="bi bi-image text-muted"></i>

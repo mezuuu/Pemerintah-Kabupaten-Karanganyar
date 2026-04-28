@@ -7,7 +7,7 @@
     <div class="row justify-content-center">
         <div class="col-lg-8">
             <div class="admin-table p-4">
-                <form action="{{ route('admin.news.store') }}" method="POST">
+                <form action="{{ route('admin.news.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
 
                     <div class="mb-3">
@@ -39,7 +39,27 @@
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                         <div class="form-text">
-                            <i class="bi bi-info-circle me-1"></i> Gambar akan otomatis diambil dari website berita
+                            <i class="bi bi-info-circle me-1"></i> Gambar akan otomatis diambil dari website berita (OG Image)
+                        </div>
+                    </div>
+
+                    {{-- Manual Image Upload --}}
+                    <div class="mb-3">
+                        <label for="manual_image" class="form-label fw-semibold">
+                            Gambar Manual <span class="text-muted fw-normal">(Opsional)</span>
+                        </label>
+                        <input type="file" class="form-control @error('manual_image') is-invalid @enderror"
+                            id="manual_image" name="manual_image" accept="image/jpeg,image/png,image/webp"
+                            onchange="previewImage(this)">
+                        @error('manual_image')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                        <div class="form-text">
+                            <i class="bi bi-image me-1"></i> Upload gambar manual jika gambar otomatis tidak tersedia. Format: JPG, PNG, WebP. Maks: 2MB.
+                        </div>
+                        {{-- Preview --}}
+                        <div id="image-preview-wrapper" class="mt-2" style="display:none;">
+                            <img id="image-preview" src="" alt="Preview" style="max-width:100%; max-height:200px; border-radius:10px; object-fit:cover; border:2px solid #dee2e6;">
                         </div>
                     </div>
 
@@ -70,4 +90,22 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function previewImage(input) {
+            const wrapper = document.getElementById('image-preview-wrapper');
+            const preview = document.getElementById('image-preview');
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                    wrapper.style.display = 'block';
+                };
+                reader.readAsDataURL(input.files[0]);
+            } else {
+                wrapper.style.display = 'none';
+                preview.src = '';
+            }
+        }
+    </script>
 @endsection

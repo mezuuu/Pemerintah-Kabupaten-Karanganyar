@@ -15,9 +15,9 @@ use App\Http\Controllers\Admin\MenuLinkController;
 */
 
 // ===================================================================
-// PUBLIC ROUTES (auto-logout admin jika mengunjungi halaman publik)
+// PUBLIC ROUTES
 // ===================================================================
-Route::middleware('logout.public')->group(function () {
+Route::group([], function () {
     // === Beranda ===
     Route::get('/', [HomeController::class, 'index'])->name('home');
 

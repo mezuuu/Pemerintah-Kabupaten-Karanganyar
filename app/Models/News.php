@@ -14,9 +14,23 @@ class News extends Model
         'description',
         'link',
         'og_image',
+        'manual_image',
         'category',
         'created_by',
     ];
+
+    /**
+     * Get the best available image for display.
+     * Priority: manual_image > og_image > null
+     */
+    public function getDisplayImageAttribute(): ?string
+    {
+        if ($this->manual_image) {
+            return asset('images/news/' . $this->manual_image);
+        }
+
+        return $this->og_image;
+    }
 
     /**
      * Get the user who created this news.

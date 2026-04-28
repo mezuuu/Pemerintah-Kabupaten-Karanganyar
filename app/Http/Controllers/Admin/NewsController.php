@@ -35,9 +35,18 @@ class NewsController extends Controller
             'description' => 'required|string|max:500',
             'link' => 'required|url',
             'category' => 'required|string|max:50',
+            'manual_image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
         ]);
 
-        // Fetch OG image from the URL
+        // Handle manual image upload
+        $manualImageName = null;
+        if ($request->hasFile('manual_image')) {
+            $file = $request->file('manual_image');
+            $manualImageName = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('images/news'), $manualImageName);
+        }
+
+        // Fetch OG image from the URL (as fallback)
         $ogImage = $this->fetchOgImage($request->link);
 
         News::create([
@@ -45,6 +54,7 @@ class NewsController extends Controller
             'description' => $request->description,
             'link' => $request->link,
             'og_image' => $ogImage,
+            'manual_image' => $manualImageName,
             'category' => $request->category,
             'created_by' => auth()->id(),
         ]);
@@ -70,6 +80,7 @@ class NewsController extends Controller
             'description' => 'required|string|max:500',
             'link' => 'required|url',
             'category' => 'required|string|max:50',
+            'manual_image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
         ]);
 
         $data = [
@@ -78,6 +89,33 @@ class NewsController extends Controller
             'link' => $request->link,
             'category' => $request->category,
         ];
+
+        // Handle manual image upload
+        if ($request->hasFile('manual_image')) {
+            // Delete old manual image if exists
+            if ($news->manual_image) {
+                $oldPath = public_path('images/news/' . $news->manual_image);
+                if (file_exists($oldPath)) {
+                    unlink($oldPath);
+                }
+            }
+
+            $file = $request->file('manual_image');
+            $manualImageName = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('images/news'), $manualImageName);
+            $data['manual_image'] = $manualImageName;
+        }
+
+        // Handle remove manual image checkbox
+        if ($request->has('remove_manual_image') && !$request->hasFile('manual_image')) {
+            if ($news->manual_image) {
+                $oldPath = public_path('images/news/' . $news->manual_image);
+                if (file_exists($oldPath)) {
+                    unlink($oldPath);
+                }
+            }
+            $data['manual_image'] = null;
+        }
 
         // Re-fetch OG image if the link has changed
         if ($news->link !== $request->link) {
@@ -99,6 +137,14 @@ class NewsController extends Controller
      */
     public function destroy(News $news)
     {
+        // Delete manual image file if exists
+        if ($news->manual_image) {
+            $path = public_path('images/news/' . $news->manual_image);
+            if (file_exists($path)) {
+                unlink($path);
+            }
+        }
+
         $news->delete();
         return redirect()->route('admin.news.index')->with('success', 'Berita berhasil dihapus!');
     }

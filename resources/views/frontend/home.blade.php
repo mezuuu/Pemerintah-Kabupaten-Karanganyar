@@ -380,8 +380,8 @@
                         <a href="{{ $item->link }}" target="_blank" class="text-decoration-none">
                             <div class="berita-card fade-in-section">
                                 <div class="berita-img">
-                                    @if($item->og_image)
-                                        <img src="{{ $item->og_image }}" alt="{{ $item->headline }}">
+                                    @if($item->display_image)
+                                        <img src="{{ $item->display_image }}" alt="{{ $item->headline }}">
                                     @else
                                         <img src="https://images.unsplash.com/photo-1504711434969-e33886168d6c?w=600&q=80" alt="{{ $item->headline }}">
                                     @endif
