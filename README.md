@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="public/images/logo.png" alt="Logo Kabupaten Karanganyar" width="90"/>
+<img src="public/images/logo-karanganyar.png" alt="Logo Kabupaten Karanganyar" width="90"/>
 
 # Portal Resmi Pemerintah Kabupaten Karanganyar
 
