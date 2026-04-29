@@ -422,6 +422,6 @@ Proyek ini dikembangkan sebagai bagian dari program **Magang MSIB di Dinas Komun
 
 *Dikembangkan untuk Pemerintah Kabupaten Karanganyar © 2026.*
 
-**[Kunjungi Website](http://localhost:8000) · [Login Admin](http://localhost:8000/admin/login)**
+**[Kunjungi Website](https://pemerintah-kabupaten-karanganyar-main-ggceev.free.laravel.cloud/)**
 
 </div>
