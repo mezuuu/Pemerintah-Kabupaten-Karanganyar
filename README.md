@@ -15,7 +15,7 @@
 
 ---
 
-## 📋 Daftar Isi
+## Daftar Isi
 
 - [Tentang Proyek](#️-tentang-proyek)
 - [Screenshot Tampilan Aplikasi](#-screenshot-tampilan-aplikasi)
@@ -31,7 +31,7 @@
 
 ---
 
-## 🏛️ Tentang Proyek
+## Tentang Proyek
 
 **Portal Resmi Pemerintah Kabupaten Karanganyar** adalah aplikasi web berbasis **Laravel 10** yang dikembangkan sebagai pusat informasi, berita, dan layanan publik digital untuk warga Kabupaten Karanganyar, Jawa Tengah.
 
@@ -39,12 +39,12 @@ Proyek ini dibangun selama program **Magang MSIB di Dinas Komunikasi dan Informa
 
 | Lapisan | Keterangan |
 |---|---|
-| 🌐 **Frontend (Publik)** | Halaman yang dapat diakses bebas oleh seluruh masyarakat, menampilkan informasi daerah, berita terkini, dan data pemerintah. |
-| 🛡️ **Backend (Admin)** | Panel manajemen khusus untuk operator Diskominfo guna mengelola konten, berita, navigasi, dan akun pengguna. |
+| **Frontend (Publik)** | Halaman yang dapat diakses bebas oleh seluruh masyarakat, menampilkan informasi daerah, berita terkini, dan data pemerintah. |
+| **Backend (Admin)** | Panel manajemen khusus untuk operator Diskominfo guna mengelola konten, berita, navigasi, dan akun pengguna. |
 
 ---
 
-## 📸 Screenshot Tampilan Aplikasi
+## Screenshot Tampilan Aplikasi
 
 ### 1. Tampilan Pengunjung — Beranda (Frontend)
 
@@ -74,9 +74,9 @@ Panel administrasi khusus operator Diskominfo. Menyediakan statistik ringkas, ma
 
 ---
 
-## ✨ Fitur Utama
+## Fitur Utama
 
-### 🌐 Frontend (Halaman Publik)
+### Frontend (Halaman Publik)
 
 | Fitur | Deskripsi |
 |---|---|
@@ -88,7 +88,7 @@ Panel administrasi khusus operator Diskominfo. Menyediakan statistik ringkas, ma
 | **GPR Widget Kominfo** | Terintegrasi dengan widget Government Public Relations (GPR) resmi Kominfo Pusat di bagian footer. |
 | **No-Cache di Semua Halaman** | Header `Cache-Control: no-store` diterapkan juga pada route publik, sehingga browser selalu mengambil data terbaru dari server dan tidak menampilkan link lama dari cache. |
 
-### 🛡️ Backend (Dashboard Admin)
+### Backend (Dashboard Admin)
 
 | Fitur | Deskripsi |
 |---|---|
@@ -102,7 +102,7 @@ Panel administrasi khusus operator Diskominfo. Menyediakan statistik ringkas, ma
 
 ---
 
-## 🛠️ Teknologi yang Digunakan
+## Teknologi yang Digunakan
 
 | Kategori | Teknologi | Versi |
 |---|---|---|
@@ -119,7 +119,7 @@ Panel administrasi khusus operator Diskominfo. Menyediakan statistik ringkas, ma
 
 ---
 
-## 📦 Persyaratan Sistem
+## Persyaratan Sistem
 
 Pastikan sistem Anda memenuhi persyaratan berikut sebelum instalasi:
 
@@ -131,7 +131,7 @@ Pastikan sistem Anda memenuhi persyaratan berikut sebelum instalasi:
 
 ---
 
-## 🚀 Cara Instalasi & Menjalankan (Local Development)
+## Cara Instalasi & Menjalankan (Local Development)
 
 Ikuti langkah-langkah berikut secara berurutan untuk menjalankan project di komputer Anda:
 
@@ -179,7 +179,7 @@ SESSION_LIFETIME=10
 SESSION_DRIVER=file
 ```
 
-> ⚠️ `SESSION_LIFETIME=10` mengatur sesi admin akan berakhir setelah **10 menit tidak aktif**, demi keamanan.
+> `SESSION_LIFETIME=10` mengatur sesi admin akan berakhir setelah **10 menit tidak aktif**, demi keamanan.
 
 ### Langkah 5 — Generate Application Key
 
@@ -219,7 +219,7 @@ php artisan serve --host 0.0.0.0 --port 8000
 
 ---
 
-## 🔑 Akun Akses Default (Testing)
+## Akun Akses Default (Testing)
 
 Setelah database selesai di-*seed*, gunakan kredensial berikut untuk masuk ke Dashboard Admin:
 
@@ -230,11 +230,11 @@ Setelah database selesai di-*seed*, gunakan kredensial berikut untuk masuk ke Da
 | **Password** | `DiskominfoKaranganyarKeren` |
 | **Role** | Administrator |
 
-> ⚠️ **Penting:** Segera ganti password default ini pada lingkungan produksi melalui menu **Kelola Akun** di Dashboard Admin.
+> **Penting:** Segera ganti password default ini pada lingkungan produksi melalui menu **Kelola Akun** di Dashboard Admin.
 
 ---
 
-## 📂 Struktur Direktori Penting
+## Struktur Direktori Penting
 
 ```text
 Pemerintah-Kabupaten-Karanganyar/
@@ -293,7 +293,7 @@ Pemerintah-Kabupaten-Karanganyar/
 
 ---
 
-## 🗺️ Daftar Route Aplikasi
+## Daftar Route Aplikasi
 
 ### Route Publik (Frontend) — dengan `NoCacheHeaders`
 
@@ -328,7 +328,7 @@ Pemerintah-Kabupaten-Karanganyar/
 
 ---
 
-## 🗃️ Skema Database
+## Skema Database
 
 ### Tabel `users`
 
@@ -371,7 +371,7 @@ Pemerintah-Kabupaten-Karanganyar/
 
 ---
 
-## 🔒 Arsitektur Keamanan
+## Arsitektur Keamanan
 
 Sistem ini menerapkan beberapa lapisan keamanan:
 
@@ -389,7 +389,7 @@ Session admin dikonfigurasi dengan `SESSION_LIFETIME=10` (10 menit inaktivitas =
 
 ---
 
-## 👥 Kontributor
+## Kontributor
 
 Proyek ini dikembangkan sebagai bagian dari program **Magang MSIB di Dinas Komunikasi dan Informatika (Diskominfo) Kabupaten Karanganyar**.
 
@@ -399,6 +399,6 @@ Proyek ini dikembangkan sebagai bagian dari program **Magang MSIB di Dinas Komun
 
 *Dikembangkan untuk Pemerintah Kabupaten Karanganyar © 2026.*
 
-**🌐 [Kunjungi Website](http://localhost:8000) · 🛡️ [Login Admin](http://localhost:8000/admin/login)**
+**[Kunjungi Website](http://localhost:8000) · [Login Admin](http://localhost:8000/admin/login)**
 
 </div>
