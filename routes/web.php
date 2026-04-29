@@ -88,3 +88,15 @@ Route::prefix('admin')->middleware(['auth', 'admin.approved', \App\Http\Middlewa
 Route::get('/debug-db', function() {
     return \App\Models\User::all();
 });
+
+Route::get('/force-seed', function() {
+    try {
+        \Illuminate\Support\Facades\Artisan::call('db:seed', [
+            '--class' => 'Database\Seeders\PostgresCompatibleSeeder',
+            '--force' => true
+        ]);
+        return 'Seeding completed! Check /debug-db now or go to /admin/login';
+    } catch (\Exception $e) {
+        return 'ERROR: ' . $e->getMessage() . ' in ' . $e->getFile() . ':' . $e->getLine();
+    }
+});
