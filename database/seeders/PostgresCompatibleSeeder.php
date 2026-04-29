@@ -9,13 +9,18 @@ class PostgresCompatibleSeeder extends Seeder
 {
     public function run()
     {
-        // 1. Insert Users
+        // 1. Clear tables to prevent duplicate ID errors on multiple deployments
+        DB::table('users')->delete();
+        DB::table('news')->delete();
+        DB::table('menu_links')->delete();
+
+        // 2. Insert Users
         DB::table('users')->insert([
             'id' => 1,
             'name' => 'Administrator Diskominfo',
             'username' => 'DiskominfoKeren',
             'email' => 'admin@karanganyarkab.go.id',
-            'password' => '$2y$12$/AfXgkWi5Qyl1/AyAgssqu0kh.sT360TP1yyrceMwukkAAnBJivdS',
+            'password' => \Illuminate\Support\Facades\Hash::make('DiskominfoKaranganyarKeren'),
             'is_admin' => 1,
             'is_approved' => 1,
             'remember_token' => 'LHmDnPhW77JWF5uuwnvpkyj6oFEyhHVPBKqmogAVBWjNyrXXhhMKEfWPqJ1f',
