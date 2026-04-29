@@ -219,6 +219,28 @@ php artisan serve --host 0.0.0.0 --port 8000
 
 ---
 
+## Cara Deploy (Laravel Cloud Serverless)
+
+Aplikasi ini telah dioptimalkan secara khusus agar dapat di-*deploy* langsung ke **Laravel Cloud** menggunakan database **PostgreSQL 18** versi *free tier*.
+
+### Tantangan Kompatibilitas Database
+Proyek ini aslinya dibangun menggunakan **MySQL**. Namun, PostgreSQL memiliki aturan *strict typing* yang sangat ketat dibandingkan MySQL.
+Oleh karena itu, telah dibuat penyesuaian khusus berupa `PostgresCompatibleSeeder.php` yang menangani:
+1. **Strict Boolean Types**: Mengubah semua angka `1` atau `0` (yang lazim dipakai di MySQL untuk tipe *tinyint boolean*) menjadi nilai asli `true` atau `false` agar tidak ditolak oleh Postgres.
+2. **Pembersihan Otomatis**: Memastikan tabel dibersihkan (`delete()`) sebelum proses *seeding* agar terhindar dari *Duplicate Key Constraints* saat *deploy* berulang kali.
+3. **Pencocokan Kolom**: Mengatasi perbedaan kolom skema *migration* bawaan agar sesuai persis saat migrasi ke server.
+
+### Langkah Deployment
+1. Sambungkan *repository* GitHub ini ke *dashboard* **Laravel Cloud**.
+2. Pilih layanan database **Laravel Serverless Postgres 18** saat melakukan pengaturan.
+3. Setelah proses *deploy* selesai dan *online*, Anda harus menjalankan proses pengisian data agar website tidak kosong. Karena *script autodeploy* kadang mengabaikan parameter `--seed`, jalankan fitur paksa dengan membuka *link* berikut di browser:
+   ```url
+   https://[NAMA-APP-ANDA].laravel.cloud/force-seed
+   ```
+4. Jika muncul tulisan **"Seeding completed!"**, silakan langsung masuk ke `/admin/login`.
+
+---
+
 ## Akun Akses Default (Testing)
 
 Setelah database selesai di-*seed*, gunakan kredensial berikut untuk masuk ke Dashboard Admin:
@@ -266,7 +288,8 @@ Pemerintah-Kabupaten-Karanganyar/
 │   ├── seeders/
 │   │   ├── AdminSeeder.php             (Seed akun admin default)
 │   │   ├── MenuLinkSeeder.php          (Seed link navigasi & halaman publik default)
-│   │   └── DatabaseSeeder.php
+│   │   ├── DatabaseSeeder.php
+│   │   └── PostgresCompatibleSeeder.php ← Seeder khusus deployment ke server PostgreSQL Cloud
 │   └── portal_karanganyar.sql          ← Dump SQL cadangan database
 │
 ├── resources/
