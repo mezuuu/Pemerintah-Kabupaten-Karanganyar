@@ -17,7 +17,7 @@ class PostgresCompatibleSeeder extends Seeder
             'email' => 'admin@karanganyarkab.go.id',
             'password' => '$2y$12$/AfXgkWi5Qyl1/AyAgssqu0kh.sT360TP1yyrceMwukkAAnBJivdS',
             'is_admin' => 1,
-            'is_active' => 1,
+            'is_approved' => 1,
             'remember_token' => 'LHmDnPhW77JWF5uuwnvpkyj6oFEyhHVPBKqmogAVBWjNyrXXhhMKEfWPqJ1f',
             'created_at' => '2026-04-27 19:40:03',
             'updated_at' => '2026-04-27 19:40:03',
