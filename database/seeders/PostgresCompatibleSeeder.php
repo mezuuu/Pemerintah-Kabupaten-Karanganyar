@@ -32,25 +32,25 @@ class PostgresCompatibleSeeder extends Seeder
         DB::table('news')->insert([
             [
                 'id' => 4,
-                'title' => 'Viral Keributan Antarpendaki di Puncak Gunung Lawu Gara-gara Berebut Foto',
-                'excerpt' => 'Keributan antarpendaki terjadi di kawasan spot puncakGunung Lawu. Insiden tersebut sempat terekam video dan viral di media sosial pada Senin (27/4/2026).\r\n\r\nDalam rekaman video yang beredar, keributan terjadi di lokasi spot foto puncak Gunung Lawu. Dalam video itu terlihat sejumlah orang terlibat adu dorong hingga menyebabkan seorang pendaki terjatuh. Sedangkan sejumlah pendaki lain tampak berupaya meredakan situasi.',
+                'headline' => 'Viral Keributan Antarpendaki di Puncak Gunung Lawu Gara-gara Berebut Foto',
+                'description' => 'Keributan antarpendaki terjadi di kawasan spot puncakGunung Lawu. Insiden tersebut sempat terekam video dan viral di media sosial pada Senin (27/4/2026).\r\n\r\nDalam rekaman video yang beredar, keributan terjadi di lokasi spot foto puncak Gunung Lawu. Dalam video itu terlihat sejumlah orang terlibat adu dorong hingga menyebabkan seorang pendaki terjatuh. Sedangkan sejumlah pendaki lain tampak berupaya meredakan situasi.',
                 'link' => 'https://solopos.espos.id/viral-keributan-antarpendaki-di-puncak-gunung-lawu-gara-gara-berebut-foto-2210681',
-                'image_url' => null,
+                'og_image' => null,
                 'manual_image' => '1777355435_69f04aab82153.webp',
                 'category' => 'Sosial',
-                'is_published' => true,
+                'created_by' => 1,
                 'created_at' => '2026-04-27 22:42:12',
                 'updated_at' => '2026-04-27 22:50:36'
             ],
             [
                 'id' => 5,
-                'title' => 'Warga Kaliwuluh Terlapor Pengeroyokan, Rencana Minta Perlindungan Hukum Ke Pemkab Dan DPRD',
-                'excerpt' => 'Disangka lakukan pengeroyokan warga kaliwuluh kebak kramat diperiksa Polres Karanganyar, rencanakan minta perlindungan hukum ke pemkab dan DPRD Karanganyar',
+                'headline' => 'Warga Kaliwuluh Terlapor Pengeroyokan, Rencana Minta Perlindungan Hukum Ke Pemkab Dan DPRD',
+                'description' => 'Disangka lakukan pengeroyokan warga kaliwuluh kebak kramat diperiksa Polres Karanganyar, rencanakan minta perlindungan hukum ke pemkab dan DPRD Karanganyar',
                 'link' => 'https://kabarkaranyar.com/warga-kaliwuluh-terlapor-pengeroyokan-rencana-minta-perlindungan-hukum-ke-pemkab-dan-dprd/',
-                'image_url' => 'https://kabarkaranganyar.com/wp-content/uploads/2026/04/IMG-20260427-191048.jpg',
+                'og_image' => 'https://kabarkaranganyar.com/wp-content/uploads/2026/04/IMG-20260427-191048.jpg',
                 'manual_image' => null,
                 'category' => 'Sosial',
-                'is_published' => true,
+                'created_by' => 1,
                 'created_at' => '2026-04-27 22:55:19',
                 'updated_at' => '2026-04-27 22:55:19'
             ]
