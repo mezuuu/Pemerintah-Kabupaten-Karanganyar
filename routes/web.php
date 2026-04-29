@@ -84,3 +84,7 @@ Route::prefix('admin')->middleware(['auth', 'admin.approved', \App\Http\Middlewa
     Route::put('/menu-links/{menuLink}', [MenuLinkController::class, 'update'])->name('admin.menu-links.update');
     Route::delete('/menu-links/{menuLink}', [MenuLinkController::class, 'destroy'])->name('admin.menu-links.destroy');
 });
+
+Route::get('/debug-db', function() {
+    return \App\Models\User::all();
+});
