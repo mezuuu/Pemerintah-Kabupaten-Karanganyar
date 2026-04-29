@@ -21,14 +21,14 @@ class PostgresCompatibleSeeder extends Seeder
             'username' => 'DiskominfoKeren',
             'email' => 'admin@karanganyarkab.go.id',
             'password' => \Illuminate\Support\Facades\Hash::make('DiskominfoKaranganyarKeren'),
-            'is_admin' => 1,
-            'is_approved' => 1,
+            'is_admin' => true,
+            'is_approved' => true,
             'remember_token' => 'LHmDnPhW77JWF5uuwnvpkyj6oFEyhHVPBKqmogAVBWjNyrXXhhMKEfWPqJ1f',
             'created_at' => '2026-04-27 19:40:03',
             'updated_at' => '2026-04-27 19:40:03',
         ]);
 
-        // 2. Insert News
+        // 3. Insert News
         DB::table('news')->insert([
             [
                 'id' => 4,
@@ -38,7 +38,7 @@ class PostgresCompatibleSeeder extends Seeder
                 'image_url' => null,
                 'manual_image' => '1777355435_69f04aab82153.webp',
                 'category' => 'Sosial',
-                'is_published' => 1,
+                'is_published' => true,
                 'created_at' => '2026-04-27 22:42:12',
                 'updated_at' => '2026-04-27 22:50:36'
             ],
@@ -50,37 +50,37 @@ class PostgresCompatibleSeeder extends Seeder
                 'image_url' => 'https://kabarkaranganyar.com/wp-content/uploads/2026/04/IMG-20260427-191048.jpg',
                 'manual_image' => null,
                 'category' => 'Sosial',
-                'is_published' => 1,
+                'is_published' => true,
                 'created_at' => '2026-04-27 22:55:19',
                 'updated_at' => '2026-04-27 22:55:19'
             ]
         ]);
 
-        // 3. Insert Menu Links
+        // 4. Insert Menu Links
         $menus = [
-            [1, 'Profil', 'Legislatif', 'https://www.karanganyarkab.go.id/legislatif/', 1, 1],
-            [2, 'Profil', 'Daftar Pejabat', 'https://www.karanganyarkab.go.id/daftar-nama-pejabat/', 1, 2],
-            [3, 'Profil', 'RLPPD', 'https://www.karanganyarkab.go.id/rlppd-kabupaten-karanganyar/', 1, 3],
-            [4, 'Profil', 'Pariwisata', 'https://pesonakaranganyar.karanganyarkab.go.id/', 1, 4],
-            [5, 'Perangkat Daerah', 'Sekretariat Daerah', 'https://setda.karanganyarkab.go.id/', 1, 1],
-            [6, 'Perangkat Daerah', 'Sekretariat DPRD', 'https://dprd.karanganyarkab.go.id/struktur-organisasi-dprd-kabupaten-karanganyar/', 1, 2],
-            [7, 'Perangkat Daerah', 'Inspektorat', 'https://inspektorat.karanganyarkab.go.id/', 1, 3],
-            [8, 'Perangkat Daerah', 'Dinas', 'https://www.karanganyarkab.go.id/category/skpd/dinas/', 1, 4],
-            [9, 'Perangkat Daerah', 'Badan', 'https://www.karanganyarkab.go.id/category/skpd/badan/', 1, 5],
-            [10, 'Perangkat Daerah', 'Kecamatan', 'https://www.karanganyarkab.go.id/kecamatan/', 1, 6],
-            [11, 'Perangkat Daerah', 'Kelurahan', 'https://www.karanganyarkab.go.id/kelurahan/', 1, 7],
-            [12, 'Perangkat Daerah', 'RSUD (Rumah Sakit Daerah)', 'https://rsudkaranganyar.simkeskhanza.com/', 1, 8],
-            [13, 'Perangkat Daerah', 'BUMD', 'https://www.karanganyarkab.go.id/category/bumd/', 1, 9],
-            [14, 'Aduan', 'Whistleblowing System', 'https://www.karanganyarkab.go.id/wbs/', 1, 1],
-            [15, 'Aduan', 'Suara Masyarakat', 'https://www.karanganyarkab.go.id/suara-masyarakat/', 1, 2],
-            [16, 'Aduan', 'Laporgub', 'https://laporgub.jatengprov.go.id/', 1, 3],
-            [17, 'Aduan', 'SP4N Lapor', 'https://www.lapor.go.id/', 1, 4],
-            [18, 'Aduan', 'Sapamas (WA)', 'https://api.whatsapp.com/send?phone=628112629999', 1, 5],
-            [19, 'Data', 'Satudata', 'https://satudata.karanganyarkab.go.id/', 1, 1],
-            [20, 'Data', 'Opendata', 'https://opendata.karanganyarkab.go.id/', 1, 2],
-            [21, 'Data', 'Keuangan Daerah', 'https://www.karanganyarkab.go.id/transparansi-anggaran-2/', 1, 3],
-            [22, 'Data', 'Hibah & Bansos', 'https://www.karanganyarkab.go.id/hibah-dan-bansos/', 1, 4],
-            [23, 'Data', 'Statistik', 'https://www.karanganyarkab.go.id/statistik/', 1, 5]
+            [1, 'Profil', 'Legislatif', 'https://www.karanganyarkab.go.id/legislatif/', true, 1],
+            [2, 'Profil', 'Daftar Pejabat', 'https://www.karanganyarkab.go.id/daftar-nama-pejabat/', true, 2],
+            [3, 'Profil', 'RLPPD', 'https://www.karanganyarkab.go.id/rlppd-kabupaten-karanganyar/', true, 3],
+            [4, 'Profil', 'Pariwisata', 'https://pesonakaranganyar.karanganyarkab.go.id/', true, 4],
+            [5, 'Perangkat Daerah', 'Sekretariat Daerah', 'https://setda.karanganyarkab.go.id/', true, 1],
+            [6, 'Perangkat Daerah', 'Sekretariat DPRD', 'https://dprd.karanganyarkab.go.id/struktur-organisasi-dprd-kabupaten-karanganyar/', true, 2],
+            [7, 'Perangkat Daerah', 'Inspektorat', 'https://inspektorat.karanganyarkab.go.id/', true, 3],
+            [8, 'Perangkat Daerah', 'Dinas', 'https://www.karanganyarkab.go.id/category/skpd/dinas/', true, 4],
+            [9, 'Perangkat Daerah', 'Badan', 'https://www.karanganyarkab.go.id/category/skpd/badan/', true, 5],
+            [10, 'Perangkat Daerah', 'Kecamatan', 'https://www.karanganyarkab.go.id/kecamatan/', true, 6],
+            [11, 'Perangkat Daerah', 'Kelurahan', 'https://www.karanganyarkab.go.id/kelurahan/', true, 7],
+            [12, 'Perangkat Daerah', 'RSUD (Rumah Sakit Daerah)', 'https://rsudkaranganyar.simkeskhanza.com/', true, 8],
+            [13, 'Perangkat Daerah', 'BUMD', 'https://www.karanganyarkab.go.id/category/bumd/', true, 9],
+            [14, 'Aduan', 'Whistleblowing System', 'https://www.karanganyarkab.go.id/wbs/', true, 1],
+            [15, 'Aduan', 'Suara Masyarakat', 'https://www.karanganyarkab.go.id/suara-masyarakat/', true, 2],
+            [16, 'Aduan', 'Laporgub', 'https://laporgub.jatengprov.go.id/', true, 3],
+            [17, 'Aduan', 'SP4N Lapor', 'https://www.lapor.go.id/', true, 4],
+            [18, 'Aduan', 'Sapamas (WA)', 'https://api.whatsapp.com/send?phone=628112629999', true, 5],
+            [19, 'Data', 'Satudata', 'https://satudata.karanganyarkab.go.id/', true, 1],
+            [20, 'Data', 'Opendata', 'https://opendata.karanganyarkab.go.id/', true, 2],
+            [21, 'Data', 'Keuangan Daerah', 'https://www.karanganyarkab.go.id/transparansi-anggaran-2/', true, 3],
+            [22, 'Data', 'Hibah & Bansos', 'https://www.karanganyarkab.go.id/hibah-dan-bansos/', true, 4],
+            [23, 'Data', 'Statistik', 'https://www.karanganyarkab.go.id/statistik/', true, 5]
         ];
 
         $menuData = [];
