@@ -90,7 +90,7 @@ class PostgresCompatibleSeeder extends Seeder
                 'group' => $m[1],
                 'label' => $m[2],
                 'url' => $m[3],
-                'is_active' => $m[4],
+                'is_external' => $m[4],
                 'order' => $m[5],
                 'created_at' => '2026-04-27 20:29:38',
                 'updated_at' => '2026-04-27 20:29:38'
