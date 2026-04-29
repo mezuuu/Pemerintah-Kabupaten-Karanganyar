@@ -31,17 +31,21 @@
     <div class="top-bar d-none d-lg-block">
         <div class="container d-flex justify-content-between align-items-center">
             <div>
-                <a href="{{ \App\Models\MenuLink::where('label', 'Satudata')->value('url') ?? 'https://satudata.karanganyarkab.go.id/' }}" target="_blank"><i class="bi bi-database me-1"></i>
+                <a href="{{ \App\Models\MenuLink::where('label', 'Satudata')->value('url') ?? 'https://satudata.karanganyarkab.go.id/' }}"
+                    target="_blank"><i class="bi bi-database me-1"></i>
                     Satudata</a>
-                <a href="{{ \App\Models\MenuLink::where('label', 'Opendata')->value('url') ?? 'https://opendata.karanganyarkab.go.id/' }}" target="_blank"><i class="bi bi-folder2-open me-1"></i>
+                <a href="{{ \App\Models\MenuLink::where('label', 'Opendata')->value('url') ?? 'https://opendata.karanganyarkab.go.id/' }}"
+                    target="_blank"><i class="bi bi-folder2-open me-1"></i>
                     Opendata</a>
                 <a href="https://ppid.karanganyarkab.go.id/" target="_blank"><i class="bi bi-info-circle me-1"></i>
                     PPID</a>
                 <a href="{{ url('/layanan-publik') }}"><i class="bi bi-headset me-1"></i> Layanan Publik</a>
             </div>
             <div class="top-bar-right">
-                <a href="{{ \App\Models\MenuLink::where('label', 'SP4N Lapor')->value('url') ?? 'https://www.lapor.go.id/' }}" target="_blank">SP4N Lapor</a>
-                <a href="{{ \App\Models\MenuLink::where('label', 'Laporgub')->value('url') ?? 'https://laporgub.jatengprov.go.id/' }}" target="_blank">Laporgub</a>
+                <a href="{{ \App\Models\MenuLink::where('label', 'SP4N Lapor')->value('url') ?? 'https://www.lapor.go.id/' }}"
+                    target="_blank">SP4N Lapor</a>
+                <a href="{{ \App\Models\MenuLink::where('label', 'Laporgub')->value('url') ?? 'https://laporgub.jatengprov.go.id/' }}"
+                    target="_blank">Laporgub</a>
             </div>
         </div>
     </div>
@@ -234,7 +238,7 @@
         });
 
         // Fade-In Animation Observer
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const observerOptions = {
                 root: null,
                 rootMargin: '0px',
@@ -257,7 +261,7 @@
             // Mobile navbar fix: close other dropdowns when one opens
             if (window.innerWidth < 992) {
                 document.querySelectorAll('.navbar-main .dropdown-toggle').forEach(toggle => {
-                    toggle.addEventListener('click', function(e) {
+                    toggle.addEventListener('click', function (e) {
                         // Close all other open dropdowns
                         document.querySelectorAll('.navbar-main .dropdown-menu.show').forEach(menu => {
                             if (menu !== this.nextElementSibling) {
@@ -271,7 +275,7 @@
 
                 // Close navbar collapse when a dropdown item is clicked
                 document.querySelectorAll('.navbar-main .dropdown-item').forEach(item => {
-                    item.addEventListener('click', function() {
+                    item.addEventListener('click', function () {
                         const navCollapse = document.getElementById('mainNav');
                         if (navCollapse && navCollapse.classList.contains('show')) {
                             const bsCollapse = bootstrap.Collapse.getInstance(navCollapse);
@@ -281,29 +285,62 @@
                 });
             }
 
-            // Auto-close navbar and dropdowns when user scrolls the page (Mobile & PC)
-            let isScrolling;
-            window.addEventListener('scroll', function() {
-                // Clear timeout to prevent execution during fast scrolling
-                window.clearTimeout(isScrolling);
+            // Auto-close navbar on scroll (Instant Response with Reflow Protection)
+            let lastScrollY = window.scrollY;
+            let ignoreScroll = false;
+            let ignoreTimer;
 
-                isScrolling = setTimeout(function() {
-                    // Close mobile navbar collapse
-                    const navCollapse = document.getElementById('mainNav');
-                    if (navCollapse && navCollapse.classList.contains('show')) {
+            // Delay animation close navbar to avoid layout shifts
+            const protectScrollReflow = function () {
+                ignoreScroll = true;
+                clearTimeout(ignoreTimer);
+                ignoreTimer = setTimeout(function () { ignoreScroll = false; }, 500);
+            };
+
+            // Protect when main menu toggles
+            const navCollapseEl = document.getElementById('mainNav');
+            if (navCollapseEl) {
+                navCollapseEl.addEventListener('show.bs.collapse', protectScrollReflow);
+                navCollapseEl.addEventListener('hide.bs.collapse', protectScrollReflow);
+            }
+
+            // Protect when any dropdown toggles
+            document.querySelectorAll('.navbar-main .dropdown-toggle').forEach(function (toggle) {
+                toggle.addEventListener('click', protectScrollReflow);
+            });
+
+            window.addEventListener('scroll', function () {
+                const navCollapse = document.getElementById('mainNav');
+                const isMobileOpen = navCollapse && navCollapse.classList.contains('show');
+                const isDesktopOpen = window.innerWidth >= 992 && document.querySelector('.navbar-main .dropdown-menu.show');
+
+                // If no menus are open OR we are in a protected reflow period (menu opening animation)
+                if (!isMobileOpen && !isDesktopOpen || ignoreScroll) {
+                    lastScrollY = window.scrollY; // Update baseline to the new shifted position
+                    return;
+                }
+
+                // If a menu is fully open, check if user scrolled more than 20px from the locked baseline
+                if (Math.abs(window.scrollY - lastScrollY) > 20) {
+                    if (isMobileOpen) {
                         const bsCollapse = bootstrap.Collapse.getInstance(navCollapse);
                         if (bsCollapse) bsCollapse.hide();
                     }
 
-                    // Close PC and Mobile dropdown menus
-                    document.querySelectorAll('.navbar-main .dropdown-menu.show').forEach(menu => {
-                        menu.classList.remove('show');
-                        if (menu.previousElementSibling) {
-                            menu.previousElementSibling.classList.remove('show');
-                            menu.previousElementSibling.setAttribute('aria-expanded', 'false');
-                        }
-                    });
-                }, 66); // Execute after 66ms of no scroll events (~15fps)
+                    // Close desktop dropdowns
+                    if (isDesktopOpen) {
+                        document.querySelectorAll('.navbar-main .dropdown-menu.show').forEach(menu => {
+                            menu.classList.remove('show');
+                            if (menu.previousElementSibling) {
+                                menu.previousElementSibling.classList.remove('show');
+                                menu.previousElementSibling.setAttribute('aria-expanded', 'false');
+                            }
+                        });
+                    }
+
+                    // Reset baseline after closing
+                    lastScrollY = window.scrollY;
+                }
             }, { passive: true });
         });
     </script>

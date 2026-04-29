@@ -41,25 +41,25 @@
                 <div class="row text-center">
                     <div class="col-6 col-md-3">
                         <div class="stat-item">
-                            <div class="stat-number">900K+</div>
+                            <div class="stat-number"><span class="counter" data-target="900">0</span>K+</div>
                             <div class="stat-label">Penduduk</div>
                         </div>
                     </div>
                     <div class="col-6 col-md-3">
                         <div class="stat-item">
-                            <div class="stat-number">17</div>
+                            <div class="stat-number"><span class="counter" data-target="17">0</span></div>
                             <div class="stat-label">Kecamatan</div>
                         </div>
                     </div>
                     <div class="col-6 col-md-3">
                         <div class="stat-item">
-                            <div class="stat-number">177</div>
+                            <div class="stat-number"><span class="counter" data-target="177">0</span></div>
                             <div class="stat-label">Desa / Kelurahan</div>
                         </div>
                     </div>
                     <div class="col-6 col-md-3">
                         <div class="stat-item">
-                            <div class="stat-number">20+</div>
+                            <div class="stat-number"><span class="counter" data-target="20">0</span>+</div>
                             <div class="stat-label">Layanan Online</div>
                         </div>
                     </div>
@@ -411,4 +411,57 @@
         </div>
     </section>
 
+@endsection
+
+@section('scripts')
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const statsBar = document.querySelector('.stats-bar');
+        const counters = document.querySelectorAll('.counter');
+        const duration = 2000; // Durasi animasi dalam milidetik (2 detik)
+
+        const startCounting = (counter) => {
+            const target = +counter.getAttribute('data-target');
+            let startTimestamp = null;
+
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                // Efek ease-out-quad agar melambat di akhir
+                const easeOutProgress = progress * (2 - progress); 
+                
+                counter.innerText = Math.floor(easeOutProgress * target);
+
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                } else {
+                    counter.innerText = target;
+                }
+            };
+
+            window.requestAnimationFrame(step);
+        };
+
+        if (statsBar && counters.length > 0) {
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    // Cek jika container stats-bar sudah masuk ke dalam viewport layar
+                    if (entry.isIntersecting) {
+                        counters.forEach(counter => {
+                            startCounting(counter);
+                        });
+                        // Hentikan pemantauan agar animasi hanya berjalan satu kali
+                        observer.unobserve(entry.target); 
+                    }
+                });
+            }, { 
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.5 // Animasi berjalan saat 50% elemen terlihat di layar (cocok untuk mobile/desktop)
+            });
+
+            observer.observe(statsBar);
+        }
+    });
+</script>
 @endsection
